@@ -181,32 +181,40 @@ export default function SpeechToTextTool() {
   return (
     <div className="max-w-4xl mx-auto">
       {/* Recording Section */}
-      <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-6">
+      <section className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-8 mb-6">
         <div className="text-center">
           <div className="flex gap-4 justify-center items-center flex-wrap mb-4">
             <button
               onClick={startRecording}
               disabled={isRecording}
-              className="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              className="px-8 py-4 bg-blue-600 dark:bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-600 dark:disabled:text-gray-400 disabled:cursor-not-allowed disabled:border disabled:border-gray-300 dark:disabled:border-gray-600 transition-all"
+              aria-label={isRecording ? "Recording in progress" : "Start recording audio"}
             >
               Start Recording
             </button>
             <button
               onClick={stopRecording}
               disabled={!isRecording}
-              className="px-8 py-4 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              className="px-8 py-4 bg-red-600 dark:bg-red-700 text-white rounded-lg font-semibold hover:bg-red-700 dark:hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-600 dark:disabled:text-gray-400 disabled:cursor-not-allowed disabled:border disabled:border-gray-300 dark:disabled:border-gray-600 transition-all"
+              aria-label="Stop recording audio"
             >
               Stop Recording
             </button>
-            <span className="text-2xl font-bold text-blue-600 font-mono min-w-[60px]">
-              {formatTime(recordingTime)}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">Time:</span>
+              <span className="text-2xl font-bold text-blue-700 dark:text-blue-400 font-mono min-w-[60px]" aria-live="polite" aria-atomic="true">
+                {formatTime(recordingTime)}
+              </span>
+            </div>
           </div>
 
           {isRecording && (
-            <div className="flex items-center justify-center gap-2 text-red-600 font-semibold">
-              <span className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></span>
-              Recording...
+            <div className="flex items-center justify-center gap-2 text-red-600 dark:text-red-400 font-semibold" role="status" aria-live="polite">
+              <span className="relative inline-flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 dark:bg-red-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600 dark:bg-red-400"></span>
+              </span>
+              <span>Recording in progress...</span>
             </div>
           )}
         </div>
@@ -214,22 +222,23 @@ export default function SpeechToTextTool() {
 
       {/* Status Section */}
       {showStatus && (
-        <section className="bg-gray-50 rounded-xl border border-gray-200 p-8 text-center mb-6">
-          <div className="text-lg text-blue-600 font-semibold mb-4">{statusMessage}</div>
-          <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin mx-auto"></div>
+        <section className="bg-blue-50 dark:bg-blue-950 rounded-xl border-2 border-blue-200 dark:border-blue-800 p-8 text-center mb-6" role="status" aria-live="polite" aria-atomic="true">
+          <div className="text-lg text-blue-900 dark:text-blue-200 font-semibold mb-4">{statusMessage}</div>
+          <div className="w-8 h-8 border-4 border-blue-200 dark:border-blue-800 border-t-blue-600 dark:border-t-blue-400 rounded-full animate-spin mx-auto" aria-hidden="true"></div>
+          <span className="sr-only">{statusMessage}</span>
         </section>
       )}
 
       {/* Output Section */}
       {showOutput && (
-        <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <h2 className="text-2xl font-semibold text-blue-600 mb-4">Transcription</h2>
-          <div className="bg-gray-50 rounded-lg p-6 mb-4 min-h-[100px] whitespace-pre-wrap text-left">
-            {transcription}
+        <section className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-8">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Transcription</h2>
+          <div className="bg-gray-50 dark:bg-slate-900 rounded-lg p-6 mb-4 min-h-[100px] whitespace-pre-wrap text-left text-gray-900 dark:text-gray-100 leading-relaxed border border-gray-200 dark:border-gray-700">
+            {transcription || <span className="text-gray-500 dark:text-gray-400 italic">Your transcription will appear here...</span>}
           </div>
           <button
             onClick={clearAll}
-            className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+            className="px-6 py-2 bg-gray-600 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 transition-colors"
           >
             Clear
           </button>

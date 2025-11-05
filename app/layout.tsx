@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://quicktools.tools'),
@@ -53,39 +55,44 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
-        <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <a href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                QuickTools
-              </a>
-              <nav className="hidden md:flex gap-6">
-                <a href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
-                  Home
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800 text-gray-900 dark:text-gray-100 transition-colors">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <header className="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50">
+            <div className="container mx-auto px-4 py-4">
+              <div className="flex items-center justify-between">
+                <a href="/" className="text-2xl font-bold text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 focus:text-blue-800 dark:focus:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded transition-colors">
+                  QuickTools
                 </a>
-                <a href="/tools/speech-to-text" className="text-gray-700 hover:text-blue-600 transition-colors">
-                  Tools
-                </a>
-                <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">
-                  About
-                </a>
-              </nav>
+                <div className="flex items-center gap-4">
+                  <nav className="hidden md:flex gap-6" aria-label="Main navigation">
+                    <a href="/" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:text-blue-600 dark:focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded px-2 py-1 transition-colors">
+                      Home
+                    </a>
+                    <a href="/tools/speech-to-text" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:text-blue-600 dark:focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded px-2 py-1 transition-colors">
+                      Tools
+                    </a>
+                    <a href="#about" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:text-blue-600 dark:focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded px-2 py-1 transition-colors">
+                      About
+                    </a>
+                  </nav>
+                  <ThemeToggle />
+                </div>
+              </div>
             </div>
-          </div>
-        </header>
-        <main className="container mx-auto px-4 py-8">
-          {children}
-        </main>
-        <footer className="border-t bg-white mt-20">
-          <div className="container mx-auto px-4 py-8">
-            <div className="text-center text-gray-600 text-sm">
-              <p className="mb-2">© 2024 QuickTools. All rights reserved.</p>
-              <p className="text-xs">All tools run locally in your browser. No data is sent to our servers.</p>
+          </header>
+          <main className="container mx-auto px-4 py-8">
+            {children}
+          </main>
+          <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-900 mt-20">
+            <div className="container mx-auto px-4 py-8">
+              <div className="text-center text-gray-700 dark:text-gray-300 text-sm">
+                <p className="mb-2">© 2024 QuickTools. All rights reserved.</p>
+                <p className="text-xs text-gray-700 dark:text-gray-400">All tools run locally in your browser. No data is sent to our servers.</p>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   );

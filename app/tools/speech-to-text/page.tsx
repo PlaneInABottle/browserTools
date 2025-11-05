@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import SpeechToTextTool from '@/components/tools/SpeechToText'
 
 export const metadata: Metadata = {
@@ -29,9 +30,9 @@ export default function SpeechToTextPage() {
     <div className="max-w-6xl mx-auto">
       {/* Breadcrumb */}
       <nav className="text-sm mb-6" aria-label="Breadcrumb">
-        <a href="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline focus:underline focus:outline-none focus:ring-1 focus:ring-blue-500">Home</a>
+        <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline focus:underline focus:outline-none focus:ring-1 focus:ring-blue-500">Home</Link>
         <span className="mx-2 text-gray-400 dark:text-gray-600">/</span>
-        <a href="/tools/speech-to-text" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline focus:underline focus:outline-none focus:ring-1 focus:ring-blue-500">Tools</a>
+        <Link href="/tools/speech-to-text" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline focus:underline focus:outline-none focus:ring-1 focus:ring-blue-500">Tools</Link>
         <span className="mx-2 text-gray-400 dark:text-gray-600">/</span>
         <span className="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">Speech to Text</span>
       </nav>

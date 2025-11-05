@@ -2,6 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { AudioProcessor } from '@/lib/audio/audio-processor'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { Textarea } from '@/components/ui/textarea'
+import { Progress } from '@/components/ui/progress'
+import { Badge } from '@/components/ui/badge'
 
 interface WorkerMessage {
   type: string
@@ -18,10 +24,10 @@ export default function SpeechToTextTool() {
   const [transcription, setTranscription] = useState('')
   const [showOutput, setShowOutput] = useState(false)
 
-  const workerRef = useRef<Worker>()
-  const mediaRecorderRef = useRef<MediaRecorder>()
+  const workerRef = useRef<Worker | undefined>(undefined)
+  const mediaRecorderRef = useRef<MediaRecorder | undefined>(undefined)
   const audioChunksRef = useRef<Blob[]>([])
-  const recordingTimerRef = useRef<NodeJS.Timeout>()
+  const recordingTimerRef = useRef<NodeJS.Timeout | undefined>(undefined)
   const recordingStartTimeRef = useRef<number>(0)
   const currentAudioDataRef = useRef<Float32Array | null>(null)
   const lastProgressUpdateRef = useRef<number>(0)
@@ -179,70 +185,91 @@ export default function SpeechToTextTool() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto space-y-6">
       {/* Recording Section */}
-      <section className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-8 mb-6">
-        <div className="text-center">
-          <div className="flex gap-4 justify-center items-center flex-wrap mb-4">
-            <button
-              onClick={startRecording}
-              disabled={isRecording}
-              className="px-8 py-4 bg-blue-600 dark:bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-600 dark:disabled:text-gray-400 disabled:cursor-not-allowed disabled:border disabled:border-gray-300 dark:disabled:border-gray-600 transition-all"
-              aria-label={isRecording ? "Recording in progress" : "Start recording audio"}
-            >
-              Start Recording
-            </button>
-            <button
-              onClick={stopRecording}
-              disabled={!isRecording}
-              className="px-8 py-4 bg-red-600 dark:bg-red-700 text-white rounded-lg font-semibold hover:bg-red-700 dark:hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-600 dark:disabled:text-gray-400 disabled:cursor-not-allowed disabled:border disabled:border-gray-300 dark:disabled:border-gray-600 transition-all"
-              aria-label="Stop recording audio"
-            >
-              Stop Recording
-            </button>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">Time:</span>
-              <span className="text-2xl font-bold text-blue-700 dark:text-blue-400 font-mono min-w-[60px]" aria-live="polite" aria-atomic="true">
-                {formatTime(recordingTime)}
-              </span>
+      <Card>
+        <CardHeader>
+          <CardTitle>Record Audio</CardTitle>
+          <CardDescription>Click start to begin recording your voice</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="text-center space-y-4">
+            <div className="flex gap-4 justify-center items-center flex-wrap">
+              <Button
+                onClick={startRecording}
+                disabled={isRecording}
+                size="lg"
+                className="px-8"
+              >
+                Start Recording
+              </Button>
+              <Button
+                onClick={stopRecording}
+                disabled={!isRecording}
+                variant="destructive"
+                size="lg"
+                className="px-8"
+              >
+                Stop Recording
+              </Button>
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="text-lg px-4 py-2">
+                  {formatTime(recordingTime)}
+                </Badge>
+              </div>
             </div>
-          </div>
 
-          {isRecording && (
-            <div className="flex items-center justify-center gap-2 text-red-600 dark:text-red-400 font-semibold" role="status" aria-live="polite">
-              <span className="relative inline-flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 dark:bg-red-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600 dark:bg-red-400"></span>
-              </span>
-              <span>Recording in progress...</span>
-            </div>
-          )}
-        </div>
-      </section>
+            {isRecording && (
+              <Alert className="border-destructive/50 bg-destructive/10">
+                <div className="flex items-center justify-center gap-2">
+                  <span className="relative inline-flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-destructive"></span>
+                  </span>
+                  <AlertDescription className="font-semibold">
+                    Recording in progress...
+                  </AlertDescription>
+                </div>
+              </Alert>
+            )}
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Status Section */}
       {showStatus && (
-        <section className="bg-blue-50 dark:bg-blue-950 rounded-xl border-2 border-blue-200 dark:border-blue-800 p-8 text-center mb-6" role="status" aria-live="polite" aria-atomic="true">
-          <div className="text-lg text-blue-900 dark:text-blue-200 font-semibold mb-4">{statusMessage}</div>
-          <div className="w-8 h-8 border-4 border-blue-200 dark:border-blue-800 border-t-blue-600 dark:border-t-blue-400 rounded-full animate-spin mx-auto" aria-hidden="true"></div>
-          <span className="sr-only">{statusMessage}</span>
-        </section>
+        <Alert>
+          <AlertDescription className="text-center space-y-4">
+            <div className="text-lg font-semibold">{statusMessage}</div>
+            <div className="flex justify-center">
+              <div className="w-8 h-8 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+            </div>
+          </AlertDescription>
+        </Alert>
       )}
 
       {/* Output Section */}
       {showOutput && (
-        <section className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-8">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Transcription</h2>
-          <div className="bg-gray-50 dark:bg-slate-900 rounded-lg p-6 mb-4 min-h-[100px] whitespace-pre-wrap text-left text-gray-900 dark:text-gray-100 leading-relaxed border border-gray-200 dark:border-gray-700">
-            {transcription || <span className="text-gray-500 dark:text-gray-400 italic">Your transcription will appear here...</span>}
-          </div>
-          <button
-            onClick={clearAll}
-            className="px-6 py-2 bg-gray-600 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 transition-colors"
-          >
-            Clear
-          </button>
-        </section>
+        <Card>
+          <CardHeader>
+            <CardTitle>Transcription</CardTitle>
+            <CardDescription>Your audio has been converted to text</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Textarea
+              value={transcription}
+              readOnly
+              className="min-h-[200px] font-mono text-base resize-none"
+              placeholder="Your transcription will appear here..."
+            />
+            <Button
+              onClick={clearAll}
+              variant="secondary"
+            >
+              Clear
+            </Button>
+          </CardContent>
+        </Card>
       )}
     </div>
   )

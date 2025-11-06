@@ -108,7 +108,7 @@ export default function RootLayout({
           <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-900 mt-20">
             <div className="container mx-auto px-4 py-8">
               <div className="text-center text-gray-700 dark:text-gray-300 text-sm">
-                <p className="mb-2">© 2024 Toolympics. All rights reserved.</p>
+                <p className="mb-2">© 2025 Toolympics. All rights reserved.</p>
                 <p className="text-xs text-gray-700 dark:text-gray-400">All tools run locally in your browser. No data is sent to our servers.</p>
               </div>
             </div>

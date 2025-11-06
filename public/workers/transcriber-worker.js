@@ -8,18 +8,25 @@ env.allowLocalModels = false;
 env.allowRemoteModels = true;
 
 class TranscriberSingleton {
-  static model = 'Xenova/whisper-tiny.en';
+  static currentModel = null;
   static instance = null;
   static isLoading = false;
 
-  static async getInstance(progressCallback) {
+  static async getInstance(model, progressCallback) {
+    // If model changed, reset instance
+    if (this.currentModel && this.currentModel !== model) {
+      this.instance = null;
+      this.currentModel = null;
+    }
+
     if (this.instance === null && !this.isLoading) {
       this.isLoading = true;
+      this.currentModel = model;
 
       try {
         this.instance = await pipeline(
           'automatic-speech-recognition',
-          this.model,
+          model,
           {
             device: 'wasm',
             dtype: 'q8',
@@ -31,11 +38,16 @@ class TranscriberSingleton {
         return this.instance;
       } catch (error) {
         this.isLoading = false;
+        this.currentModel = null;
         throw error;
       }
     }
 
     return this.instance;
+  }
+
+  static getCurrentModel() {
+    return this.currentModel;
   }
 }
 
@@ -45,7 +57,7 @@ self.addEventListener('message', async (event) => {
   try {
     switch (type) {
       case 'load':
-        await handleLoad();
+        await handleLoad(data);
         break;
 
       case 'transcribe':
@@ -66,22 +78,28 @@ self.addEventListener('message', async (event) => {
   }
 });
 
-async function handleLoad() {
+async function handleLoad(data) {
   try {
-    await TranscriberSingleton.getInstance((progress) => {
+    const model = data?.model || 'Xenova/whisper-tiny.en';
+
+    await TranscriberSingleton.getInstance(model, (progress) => {
       if (progress.status === 'progress') {
         self.postMessage({
           type: 'download-progress',
           data: {
             file: progress.file,
             loaded: progress.loaded || 0,
-            total: progress.total || 0
+            total: progress.total || 0,
+            model: model
           }
         });
       }
     });
 
-    self.postMessage({ type: 'load-complete' });
+    self.postMessage({
+      type: 'load-complete',
+      data: { model: TranscriberSingleton.getCurrentModel() }
+    });
   } catch (error) {
     self.postMessage({
       type: 'error',

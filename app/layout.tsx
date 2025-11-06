@@ -1,41 +1,43 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { siteConfig } from "@/lib/config/site";
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
+}
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://quicktools.tools'),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: 'QuickTools - Free Browser Utilities',
     template: '%s | QuickTools'
   },
-  description: 'Quick & simple browser utilities. Convert, resize, transcribe - all for free. Privacy-focused tools that run entirely in your browser.',
+  description: siteConfig.description,
   keywords: ['online tools', 'browser tools', 'free tools', 'speech to text', 'pdf converter', 'image resizer', 'privacy tools'],
-  authors: [{ name: 'QuickTools' }],
-  creator: 'QuickTools',
-  publisher: 'QuickTools',
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://quicktools.tools',
-    siteName: 'QuickTools',
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     title: 'QuickTools - Free Browser Utilities',
     description: 'Quick & simple browser utilities. All processing happens in your browser.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'QuickTools - Free Browser Utilities',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'QuickTools - Free Browser Utilities',
-    description: 'Quick & simple browser utilities',
-    images: ['/og-image.png'],
+    description: siteConfig.shortDescription,
   },
   robots: {
     index: true,
@@ -50,6 +52,16 @@ export const metadata: Metadata = {
   },
 }
 
+// Organization Schema
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteConfig.name,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/icon?size=512`,
+  sameAs: [],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +69,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className="antialiased min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800 text-gray-900 dark:text-gray-100 transition-colors">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header className="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50">

@@ -27,6 +27,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: `${siteConfig.url}/tools/speech-to-text`,
+    languages: {
+      'en-US': `${siteConfig.url}/tools/speech-to-text`,
+      // Add more when internationalization is ready:
+      // 'es': `${siteConfig.url}/es/tools/speech-to-text`,
+      // 'fr': `${siteConfig.url}/fr/tools/speech-to-text`,
+    },
   },
 }
 

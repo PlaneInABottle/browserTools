@@ -3,4 +3,6 @@ export const siteConfig = {
   name: 'QuickTools',
   description: 'Quick & simple browser utilities. Convert, resize, transcribe - all for free. Privacy-focused tools that run entirely in your browser.',
   shortDescription: 'Quick & simple browser utilities',
+  defaultLocale: 'en-US' as const,
+  supportedLocales: ['en-US'] as const, // Add more when ready: ['en-US', 'es', 'fr']
 } as const

@@ -12,7 +12,7 @@ export default function Icon() {
     (
       <div
         style={{
-          fontSize: 24,
+          fontSize: 20,
           background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
           width: '100%',
           height: '100%',
@@ -20,10 +20,11 @@ export default function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           color: 'white',
+          fontWeight: 'bold',
           borderRadius: '20%',
         }}
       >
-        Q
+        QT
       </div>
     ),
     {

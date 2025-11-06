@@ -6,6 +6,7 @@ export interface Tool {
   category: 'audio' | 'text' | 'image' | 'pdf' | 'video'
   href: string
   featured?: boolean
+  pagePath: string // Path to the page file for git tracking
 }
 
 export const tools: Tool[] = [
@@ -16,6 +17,7 @@ export const tools: Tool[] = [
     icon: '🎤',
     category: 'audio',
     href: '/tools/speech-to-text',
+    pagePath: 'speech-to-text',
     featured: true
   },
   // Future tools will be added here

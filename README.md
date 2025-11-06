@@ -1,4 +1,4 @@
-# QuickTools - Free Browser Utilities
+# Toolympics - Free Browser Utilities
 
 Quick & simple browser utilities. All processing happens locally in your browser for complete privacy.
 
@@ -59,7 +59,7 @@ To test the tools' logic and functionality, use the `/exampleFiles` directory:
 ## Project Structure
 
 ```
-quicktools/
+toolympics/
 ├── app/                          # Next.js App Router
 │   ├── layout.tsx                # Root layout with header/footer
 │   ├── page.tsx                  # Homepage with tool grid

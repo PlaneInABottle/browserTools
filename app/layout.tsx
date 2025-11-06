@@ -18,8 +18,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'QuickTools - Free Browser Utilities',
-    template: '%s | QuickTools'
+    default: 'Toolympics - Free Browser Utilities',
+    template: '%s | Toolympics'
   },
   description: siteConfig.description,
   keywords: ['online tools', 'browser tools', 'free tools', 'speech to text', 'pdf converter', 'image resizer', 'privacy tools'],
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: 'QuickTools - Free Browser Utilities',
+    title: 'Toolympics - Free Browser Utilities',
     description: 'Quick & simple browser utilities. All processing happens in your browser.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'QuickTools - Free Browser Utilities',
+    title: 'Toolympics - Free Browser Utilities',
     description: siteConfig.shortDescription,
   },
   robots: {
@@ -83,7 +83,7 @@ export default function RootLayout({
             <div className="container mx-auto px-4 py-4">
               <div className="flex items-center justify-between">
                 <Link href="/" className="text-2xl font-bold text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 focus:text-blue-800 dark:focus:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded transition-colors">
-                  QuickTools
+                  Toolympics
                 </Link>
                 <div className="flex items-center gap-4">
                   <nav className="hidden md:flex gap-6" aria-label="Main navigation">
@@ -108,7 +108,7 @@ export default function RootLayout({
           <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-900 mt-20">
             <div className="container mx-auto px-4 py-8">
               <div className="text-center text-gray-700 dark:text-gray-300 text-sm">
-                <p className="mb-2">© 2024 QuickTools. All rights reserved.</p>
+                <p className="mb-2">© 2024 Toolympics. All rights reserved.</p>
                 <p className="text-xs text-gray-700 dark:text-gray-400">All tools run locally in your browser. No data is sent to our servers.</p>
               </div>
             </div>

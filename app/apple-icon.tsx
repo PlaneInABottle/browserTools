@@ -23,7 +23,7 @@ export default function AppleIcon() {
           fontWeight: 'bold',
         }}
       >
-        QT
+        TL
       </div>
     ),
     {

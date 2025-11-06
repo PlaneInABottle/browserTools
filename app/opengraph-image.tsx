@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'QuickTools - Free Browser Utilities'
+export const alt = 'Toolympics - Free Browser Utilities'
 export const size = {
   width: 1200,
   height: 630,
@@ -39,7 +39,7 @@ export default async function Image() {
               marginBottom: 20,
             }}
           >
-            QuickTools
+            Toolympics
           </div>
           <div
             style={{

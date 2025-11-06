@@ -23,6 +23,8 @@ export default function SpeechToTextTool() {
   const [showStatus, setShowStatus] = useState(false)
   const [transcription, setTranscription] = useState('')
   const [showOutput, setShowOutput] = useState(false)
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [isUploading, setIsUploading] = useState(false)
 
   const workerRef = useRef<Worker | undefined>(undefined)
   const mediaRecorderRef = useRef<MediaRecorder | undefined>(undefined)
@@ -135,8 +137,14 @@ export default function SpeechToTextTool() {
 
   const handleAudioBlob = async (blob: Blob) => {
     try {
+      setIsProcessing(true)
+      setIsUploading(true)
+      showStatusMessage('Processing audio file...')
+
       currentAudioDataRef.current = await AudioProcessor.processAudioFile(blob)
       console.log('Audio processed, samples:', currentAudioDataRef.current.length)
+
+      setIsUploading(false)
 
       if (!isModelLoaded) {
         loadModel()
@@ -146,6 +154,9 @@ export default function SpeechToTextTool() {
     } catch (error) {
       console.error('Error processing audio:', error)
       alert('Error: Failed to process audio')
+      setIsProcessing(false)
+      setIsUploading(false)
+      hideStatus()
     }
   }
 
@@ -175,7 +186,31 @@ export default function SpeechToTextTool() {
   const clearAll = () => {
     setTranscription('')
     setShowOutput(false)
+    setIsProcessing(false)
+    setIsUploading(false)
     currentAudioDataRef.current = null
+  }
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(transcription)
+      alert('Transcription copied to clipboard!')
+    } catch (error) {
+      console.error('Failed to copy:', error)
+      alert('Failed to copy to clipboard')
+    }
+  }
+
+  const downloadTranscription = () => {
+    const blob = new Blob([transcription], { type: 'text/plain' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `transcription-${new Date().toISOString().slice(0, 10)}.txt`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
   }
 
   const formatTime = (seconds: number) => {
@@ -246,22 +281,38 @@ export default function SpeechToTextTool() {
               className="min-h-[200px] font-mono text-base resize-none"
               placeholder="Your transcription will appear here..."
             />
-            <Button
-              onClick={clearAll}
-              variant="secondary"
-            >
-              Clear
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                onClick={copyToClipboard}
+                variant="default"
+              >
+                📋 Copy
+              </Button>
+              <Button
+                onClick={downloadTranscription}
+                variant="default"
+              >
+                💾 Download
+              </Button>
+              <Button
+                onClick={clearAll}
+                variant="outline"
+                className="ml-auto"
+              >
+                ✨ Transcribe New Audio
+              </Button>
+            </div>
           </CardContent>
         </Card>
       )}
 
       {/* Recording Section */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Record Audio</CardTitle>
-          <CardDescription>Click start to begin recording your voice</CardDescription>
-        </CardHeader>
+      {!isProcessing && !showOutput && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Record Audio</CardTitle>
+            <CardDescription>Click start to begin recording your voice</CardDescription>
+          </CardHeader>
         <CardContent>
           <div className="text-center space-y-4">
             <div className="flex gap-4 justify-center items-center flex-wrap">
@@ -305,13 +356,15 @@ export default function SpeechToTextTool() {
           </div>
         </CardContent>
       </Card>
+      )}
 
       {/* File Upload Section */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Or Upload Audio File</CardTitle>
-          <CardDescription>Drag and drop or choose an audio file from your computer</CardDescription>
-        </CardHeader>
+      {!isProcessing && !showOutput && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Or Upload Audio File</CardTitle>
+            <CardDescription>Drag and drop or choose an audio file from your computer</CardDescription>
+          </CardHeader>
         <CardContent>
           <div
             onDragOver={handleDragOver}
@@ -351,6 +404,7 @@ export default function SpeechToTextTool() {
           </div>
         </CardContent>
       </Card>
+      )}
     </div>
   )
 }

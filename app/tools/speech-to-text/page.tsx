@@ -40,17 +40,15 @@ export default function SpeechToTextPage() {
       </nav>
 
       {/* Page Header */}
-      <Card className="mb-12">
-        <CardHeader className="text-center pb-8">
-          <div className="text-6xl mb-4">🎤</div>
-          <CardTitle className="text-4xl mb-4">
-            Speech to Text Converter
-          </CardTitle>
-          <CardDescription className="text-xl max-w-2xl mx-auto">
-            Convert audio recordings to text using AI. Free, fast, and completely private.
-          </CardDescription>
-        </CardHeader>
-      </Card>
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+          <span>🎤</span>
+          <span>Speech to Text</span>
+        </h1>
+        <p className="text-muted-foreground">
+          Convert audio recordings to text using AI. Free, fast, and completely private.
+        </p>
+      </div>
 
       {/* Tool Component */}
       <SpeechToTextTool />

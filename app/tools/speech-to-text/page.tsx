@@ -61,13 +61,28 @@ export default function SpeechToTextPage() {
           <CardTitle className="text-2xl">How to Use</CardTitle>
         </CardHeader>
         <CardContent>
-          <ol className="list-decimal list-inside space-y-2 text-muted-foreground leading-relaxed">
-            <li>Click "Start Recording" to begin capturing audio from your microphone</li>
-            <li>Speak clearly into your microphone</li>
-            <li>Click "Stop Recording" when finished</li>
-            <li>The AI model will download automatically (first time only, ~150MB)</li>
-            <li>Your transcription will appear within seconds</li>
-          </ol>
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-lg mb-3">Option 1: Record Audio</h3>
+              <ol className="list-decimal list-inside space-y-2 text-muted-foreground leading-relaxed">
+                <li>Click "Start Recording" to begin capturing audio from your microphone</li>
+                <li>Speak clearly into your microphone</li>
+                <li>Click "Stop Recording" when finished</li>
+                <li>The AI model will download automatically (first time only, ~150MB)</li>
+                <li>Your transcription will appear within seconds</li>
+              </ol>
+            </div>
+            <Separator />
+            <div>
+              <h3 className="font-semibold text-lg mb-3">Option 2: Upload Audio File</h3>
+              <ol className="list-decimal list-inside space-y-2 text-muted-foreground leading-relaxed">
+                <li>Drag and drop an audio file into the upload zone, or click "Choose File"</li>
+                <li>Supported formats: MP3, WAV, M4A, WebM, and more</li>
+                <li>The file will be processed locally in your browser</li>
+                <li>Your transcription will appear automatically</li>
+              </ol>
+            </div>
+          </div>
         </CardContent>
       </Card>
 

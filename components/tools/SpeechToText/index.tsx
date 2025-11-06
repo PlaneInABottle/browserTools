@@ -184,58 +184,42 @@ export default function SpeechToTextTool() {
     return `${mins}:${secs}`
   }
 
+  const [isDragging, setIsDragging] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(true)
+  }
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(false)
+  }
+
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(false)
+
+    const files = Array.from(e.dataTransfer.files)
+    const audioFile = files.find(file => file.type.startsWith('audio/'))
+
+    if (audioFile) {
+      await handleAudioBlob(audioFile)
+    } else {
+      alert('Please drop an audio file')
+    }
+  }
+
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      await handleAudioBlob(file)
+    }
+  }
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      {/* Recording Section */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Record Audio</CardTitle>
-          <CardDescription>Click start to begin recording your voice</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="text-center space-y-4">
-            <div className="flex gap-4 justify-center items-center flex-wrap">
-              <Button
-                onClick={startRecording}
-                disabled={isRecording}
-                size="lg"
-                className="px-8"
-              >
-                Start Recording
-              </Button>
-              <Button
-                onClick={stopRecording}
-                disabled={!isRecording}
-                variant="destructive"
-                size="lg"
-                className="px-8"
-              >
-                Stop Recording
-              </Button>
-              <div className="flex items-center gap-2">
-                <Badge variant="outline" className="text-lg px-4 py-2">
-                  {formatTime(recordingTime)}
-                </Badge>
-              </div>
-            </div>
-
-            {isRecording && (
-              <Alert className="border-destructive/50 bg-destructive/10">
-                <div className="flex items-center justify-center gap-2">
-                  <span className="relative inline-flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-destructive"></span>
-                  </span>
-                  <AlertDescription className="font-semibold">
-                    Recording in progress...
-                  </AlertDescription>
-                </div>
-              </Alert>
-            )}
-          </div>
-        </CardContent>
-      </Card>
-
       {/* Status Section */}
       {showStatus && (
         <Alert>
@@ -271,6 +255,102 @@ export default function SpeechToTextTool() {
           </CardContent>
         </Card>
       )}
+
+      {/* Recording Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Record Audio</CardTitle>
+          <CardDescription>Click start to begin recording your voice</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="text-center space-y-4">
+            <div className="flex gap-4 justify-center items-center flex-wrap">
+              <Button
+                onClick={startRecording}
+                disabled={isRecording}
+                size="lg"
+                className="px-8"
+              >
+                Start Recording
+              </Button>
+              <Button
+                onClick={stopRecording}
+                disabled={!isRecording}
+                variant="destructive"
+                size="lg"
+                className="px-8"
+              >
+                Stop Recording
+              </Button>
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="text-lg px-4 py-2">
+                  {formatTime(recordingTime)}
+                </Badge>
+              </div>
+            </div>
+
+            {isRecording && (
+              <Alert className="border-destructive/50 bg-destructive/10 flex justify-center">
+                <div className="flex items-center justify-center gap-2">
+                  <span className="relative inline-flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-destructive"></span>
+                  </span>
+                  <AlertDescription className="font-semibold">
+                    Recording in progress...
+                  </AlertDescription>
+                </div>
+              </Alert>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* File Upload Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Or Upload Audio File</CardTitle>
+          <CardDescription>Drag and drop or choose an audio file from your computer</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+            className={`border-2 border-dashed rounded-lg p-12 text-center transition-colors ${
+              isDragging
+                ? 'border-primary bg-primary/5'
+                : 'border-muted-foreground/25 hover:border-primary/50'
+            }`}
+          >
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="audio/*"
+              onChange={handleFileSelect}
+              className="hidden"
+            />
+            <div className="space-y-4">
+              <div className="text-6xl">🎵</div>
+              <div>
+                <p className="text-lg font-semibold mb-2">
+                  {isDragging ? 'Drop your audio file here' : 'Drag and drop your audio file'}
+                </p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Supports MP3, WAV, M4A, WebM, and other audio formats
+                </p>
+              </div>
+              <Button
+                onClick={() => fileInputRef.current?.click()}
+                variant="secondary"
+                size="lg"
+              >
+                Choose File
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

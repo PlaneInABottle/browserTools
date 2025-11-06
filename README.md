@@ -49,6 +49,13 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000)
 
+## Testing
+
+To test the tools' logic and functionality, use the `/exampleFiles` directory:
+- Place test audio, image, PDF, or other files in this folder
+- The folder is gitignored to prevent committing large test files
+- Use these files to validate tool functionality during development
+
 ## Project Structure
 
 ```

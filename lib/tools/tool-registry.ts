@@ -80,6 +80,16 @@ export const tools: Tool[] = [
     pagePath: 'image-resizer',
     featured: true
   },
+  {
+    id: 'video-to-gif',
+    name: 'Video to GIF',
+    description: 'Convert videos to animated GIFs with customizable quality, frame rate, and dimensions. Trim clips and adjust settings. 100% private.',
+    icon: '🎬',
+    category: 'video',
+    href: '/tools/video-to-gif',
+    pagePath: 'video-to-gif',
+    featured: true
+  },
 ]
 
 export const categories = [

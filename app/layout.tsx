@@ -3,6 +3,7 @@ import "./globals.css";
 import Link from "next/link";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/lib/config/site";
 
 export const viewport: Viewport = {
@@ -113,6 +114,7 @@ export default function RootLayout({
               </div>
             </div>
           </footer>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

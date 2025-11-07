@@ -20,7 +20,16 @@ export const tools: Tool[] = [
     pagePath: 'speech-to-text',
     featured: true
   },
-  // Future tools will be added here
+  {
+    id: 'word-counter',
+    name: 'Word Counter',
+    description: 'Count words, characters, sentences, paragraphs, and reading time instantly. Free and works offline.',
+    icon: '📝',
+    category: 'text',
+    href: '/tools/word-counter',
+    pagePath: 'word-counter',
+    featured: true
+  },
 ]
 
 export const categories = [

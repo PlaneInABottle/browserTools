@@ -9,12 +9,14 @@ import { Textarea } from '@/components/ui/textarea'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { toast } from 'sonner'
 
-interface WorkerMessage {
-  type: string
-  data?: any
-  error?: string
-}
+type WorkerMessage =
+  | { type: 'load-complete'; data: { model: string } }
+  | { type: 'download-progress'; data: { file: string; loaded: number; total: number; model: string } }
+  | { type: 'transcription-start' }
+  | { type: 'transcription-complete'; data: { text: string; processingTime: string } }
+  | { type: 'error'; error: string }
 
 interface ModelConfig {
   id: string
@@ -64,6 +66,7 @@ export default function SpeechToTextTool() {
   const [isUploading, setIsUploading] = useState(false)
   const [selectedModel, setSelectedModel] = useState<string>(AVAILABLE_MODELS[0].id)
   const [currentLoadedModel, setCurrentLoadedModel] = useState<string | null>(null)
+  const [browserSupported, setBrowserSupported] = useState<boolean>(true)
 
   const workerRef = useRef<Worker | undefined>(undefined)
   const mediaRecorderRef = useRef<MediaRecorder | undefined>(undefined)
@@ -74,29 +77,67 @@ export default function SpeechToTextTool() {
   const lastProgressUpdateRef = useRef<number>(0)
   const downloadProgressRef = useRef<{ [key: string]: { loaded: number, total: number } }>({})
 
+  // Check browser compatibility
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hasRequiredAPIs =
+        typeof Worker !== 'undefined' &&
+        typeof AudioContext !== 'undefined' &&
+        typeof MediaRecorder !== 'undefined'
+
+      if (!hasRequiredAPIs) {
+        setBrowserSupported(false)
+        toast.error('Your browser does not support required features. Please use a modern browser.')
+      }
+    }
+  }, [])
+
   useEffect(() => {
     // Initialize worker only in browser
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && browserSupported) {
       workerRef.current = new Worker('/workers/transcriber-worker.js', { type: 'module' })
 
       workerRef.current.addEventListener('message', handleWorkerMessage)
 
       return () => {
+        cleanup()
         workerRef.current?.terminate()
       }
     }
-  }, [])
+  }, [browserSupported])
 
-  const handleWorkerMessage = (event: MessageEvent<WorkerMessage>) => {
-    const { type, data, error } = event.data
+  const cleanup = () => {
+    // Stop all media tracks
+    mediaRecorderRef.current?.stream?.getTracks().forEach(track => track.stop())
+    // Clear timers
+    if (recordingTimerRef.current) clearInterval(recordingTimerRef.current)
+    // Reset recording state
+    setIsRecording(false)
+  }
 
-    switch (type) {
+  const handleWorkerMessage = (event: MessageEvent) => {
+    // SECURITY: For Web Workers, validate message source instead of origin
+    // Web Workers don't have origin property - they're always same-origin
+    // Only validate if event.source exists (cross-document messaging)
+    if (event.origin && typeof window !== 'undefined' && event.origin !== window.location.origin) {
+      console.error('Rejected message from unauthorized origin:', event.origin)
+      return
+    }
+
+    const message = event.data as WorkerMessage
+    
+    // Validate message structure
+    if (!message || typeof message.type !== 'string') {
+      console.error('Invalid message format:', message)
+      return
+    }
+
+    switch (message.type) {
       case 'load-complete':
         setIsModelLoaded(true)
-        setCurrentLoadedModel(data?.model || selectedModel)
-        console.log('Model loaded:', data?.model)
+        setCurrentLoadedModel(message.data?.model || selectedModel)
+        console.log('Model loaded:', message.data?.model)
         if (currentAudioDataRef.current) {
-          // Show transcribing immediately instead of hiding status
           showStatusMessage('Transcribing...')
           transcribe()
         } else {
@@ -105,7 +146,7 @@ export default function SpeechToTextTool() {
         break
 
       case 'download-progress':
-        handleDownloadProgress(data)
+        handleDownloadProgress(message.data)
         break
 
       case 'transcription-start':
@@ -114,13 +155,13 @@ export default function SpeechToTextTool() {
 
       case 'transcription-complete':
         hideStatus()
-        setTranscription(data.text)
+        setTranscription(message.data.text)
         setShowOutput(true)
         console.log('Transcription completed')
         break
 
       case 'error':
-        alert(`Error: ${error}`)
+        toast.error(`Error: ${message.error}`)
         hideStatus()
         break
     }
@@ -187,7 +228,7 @@ export default function SpeechToTextTool() {
       }, 1000)
     } catch (error) {
       console.error('Error accessing microphone:', error)
-      alert('Could not access microphone')
+      toast.error('Could not access microphone. Please check your permissions.')
     }
   }
 
@@ -219,7 +260,8 @@ export default function SpeechToTextTool() {
       }
     } catch (error) {
       console.error('Error processing audio:', error)
-      alert('Error: Failed to process audio')
+      toast.error('Failed to process audio. Please try again.')
+      cleanup()
       setIsProcessing(false)
       setIsUploading(false)
       hideStatus()
@@ -279,10 +321,10 @@ export default function SpeechToTextTool() {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(transcription)
-      alert('Transcription copied to clipboard!')
+      toast.success('Transcription copied to clipboard!')
     } catch (error) {
       console.error('Failed to copy:', error)
-      alert('Failed to copy to clipboard')
+      toast.error('Failed to copy to clipboard')
     }
   }
 
@@ -327,7 +369,7 @@ export default function SpeechToTextTool() {
     if (audioFile) {
       await handleAudioBlob(audioFile)
     } else {
-      alert('Please drop an audio file')
+      toast.error('Please drop an audio file')
     }
   }
 
@@ -344,8 +386,17 @@ export default function SpeechToTextTool() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
+      {/* Browser Compatibility Warning */}
+      {!browserSupported && (
+        <Alert variant="destructive">
+          <AlertDescription>
+            Your browser does not support the required features for this tool. Please use a modern browser like Chrome, Firefox, or Edge.
+          </AlertDescription>
+        </Alert>
+      )}
+
       {/* Model Selection Section */}
-      {!isProcessing && !showOutput && (
+      {!isProcessing && !showOutput && browserSupported && (
         <Card>
           <CardHeader>
             <CardTitle>Model Selection</CardTitle>
@@ -548,6 +599,8 @@ export default function SpeechToTextTool() {
                 accept="audio/*"
                 onChange={handleFileSelect}
                 className="hidden"
+                aria-label="Upload audio file for transcription"
+                id="audio-file-input"
               />
               <div className="space-y-4">
                 <div className="text-6xl">🎵</div>

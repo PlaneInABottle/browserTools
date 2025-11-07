@@ -6,6 +6,12 @@ import { execSync } from 'child_process'
  */
 export function getLastModifiedDate(filePath: string): Date {
   try {
+    // SECURITY: Validate filePath to prevent command injection
+    if (!/^[a-zA-Z0-9/_.-]+$/.test(filePath)) {
+      console.warn('Invalid file path format:', filePath)
+      return new Date()
+    }
+
     // Get the timestamp of the last commit that modified this file
     const timestamp = execSync(
       `git log -1 --format=%ct -- ${filePath}`,

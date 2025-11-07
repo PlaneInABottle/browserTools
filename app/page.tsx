@@ -56,21 +56,6 @@ export default function Home() {
           <Card className="h-full border-dashed opacity-60">
             <CardHeader>
               <div className="flex items-start gap-4">
-                <div className="text-4xl grayscale">🖼️</div>
-                <div className="flex-1">
-                  <CardTitle className="text-muted-foreground">Image Resizer</CardTitle>
-                  <CardDescription>Resize and optimize images</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Badge variant="secondary">Coming Soon</Badge>
-            </CardContent>
-          </Card>
-
-          <Card className="h-full border-dashed opacity-60">
-            <CardHeader>
-              <div className="flex items-start gap-4">
                 <div className="text-4xl grayscale">📄</div>
                 <div className="flex-1">
                   <CardTitle className="text-muted-foreground">PDF Converter</CardTitle>

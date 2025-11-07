@@ -669,7 +669,11 @@ export default function VideoToGif() {
 
               {/* Action Buttons */}
               <div className="flex gap-2">
-                <Button onClick={handleConvertAll} className="flex-1">
+                <Button 
+                  onClick={handleConvertAll} 
+                  className="flex-1"
+                  disabled={videos.some((video) => video.status === 'processing')}
+                >
                   {videos.some((video) => video.status === 'processing') ? (
                     <>
                       <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -693,7 +697,52 @@ export default function VideoToGif() {
         </div>
       )}
 
-      {/* Video Preview */}
+      {/* GIF Preview & Download - Show when conversion is complete */}
+      {selectedVideo && selectedVideo.status === 'completed' && selectedVideo.gifBlob && (
+        <Card>
+          <CardHeader>
+            <CardTitle>GIF Preview & Download</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 border rounded-lg bg-green-50 dark:bg-green-950/20">
+                <div>
+                  <p className="font-medium">✓ GIF Ready</p>
+                  <p className="text-sm text-muted-foreground">
+                    Original: {formatFileSize(selectedVideo.size)} •
+                    GIF: {formatFileSize(selectedVideo.gifSize || 0)} 
+                    ({((selectedVideo.gifSize || 0) / selectedVideo.size * 100).toFixed(1)}% of original)
+                  </p>
+                </div>
+                <Button onClick={() => downloadGif(selectedVideo)}>
+                  <Download className="h-4 w-4 mr-2" />
+                  Download GIF
+                </Button>
+              </div>
+              
+              {/* Inline GIF Preview */}
+              <div className="border rounded-lg p-4 bg-muted/20">
+                <h3 className="font-medium mb-2">Preview</h3>
+                <div className="flex flex-col items-center">
+                  <img
+                    src={URL.createObjectURL(selectedVideo.gifBlob)}
+                    alt="GIF Preview"
+                    className="max-w-full max-h-96 object-contain border rounded"
+                  />
+                  <div className="text-center text-sm text-muted-foreground mt-2">
+                    <p>Size: {formatFileSize(selectedVideo.gifSize || 0)}</p>
+                    <p>Dimensions: {(selectedVideo as any).finalWidth || conversionOptions.maxWidth} × {(selectedVideo as any).finalHeight || conversionOptions.maxHeight}</p>
+                    <p>Frame Rate: {(selectedVideo as any).finalFrameRate || conversionOptions.frameRate} FPS</p>
+                    <p>Quality: {(selectedVideo as any).finalQuality || conversionOptions.quality}/10</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Video Preview & Trimming */}
       {selectedVideo && (
         <Card>
           <CardHeader>
@@ -793,45 +842,6 @@ export default function VideoToGif() {
                   </Button>
                 </div>
               </div>
-
-              {/* Download Individual */}
-              {selectedVideo.status === 'completed' && selectedVideo.gifBlob && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 border rounded-lg">
-                    <div>
-                      <p className="font-medium">GIF Ready</p>
-                      <p className="text-sm text-muted-foreground">
-                        Original: {formatFileSize(selectedVideo.size)} •
-                        GIF: {formatFileSize(selectedVideo.gifSize || 0)}
-                      </p>
-                    </div>
-                    <Button onClick={() => downloadGif(selectedVideo)}>
-                      <Download className="h-4 w-4 mr-2" />
-                      Download GIF
-                    </Button>
-                  </div>
-                  
-                  {/* Inline GIF Preview */}
-                  <div className="border rounded-lg p-4 bg-muted/20">
-                    <h3 className="font-medium mb-2">GIF Preview</h3>
-                    <div className="flex flex-col items-center">
-                      <img
-                        src={URL.createObjectURL(selectedVideo.gifBlob)}
-                        alt="GIF Preview"
-                        className="max-w-full max-h-96 object-contain border rounded"
-                      />
-                      <div className="text-center text-sm text-muted-foreground mt-2">
-                        <p>Size: {formatFileSize(selectedVideo.gifSize || 0)}</p>
-                        <p>Dimensions: {(selectedVideo as any).finalWidth || conversionOptions.maxWidth} × {(selectedVideo as any).finalHeight || conversionOptions.maxHeight}</p>
-                        <p>Frame Rate: {(selectedVideo as any).finalFrameRate || conversionOptions.frameRate} FPS</p>
-                        {selectedVideo.status === 'completed' && (
-                          <p>Quality: {(selectedVideo as any).finalQuality || conversionOptions.quality}/10</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </CardContent>
         </Card>

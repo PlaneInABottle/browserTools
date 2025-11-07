@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Copy, Trash2 } from 'lucide-react'
+import { toast } from 'sonner'
 
 interface TextStats {
   words: number
@@ -119,8 +120,10 @@ ${stats.topKeywords.length > 0 ? `\nTop Keywords:\n${stats.topKeywords.map(k => 
       await navigator.clipboard.writeText(statsText)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
+      toast.success('Statistics copied to clipboard!')
     } catch (err) {
       console.error('Failed to copy:', err)
+      toast.error('Failed to copy to clipboard')
     }
   }
   

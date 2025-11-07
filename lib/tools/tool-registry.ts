@@ -30,6 +30,16 @@ export const tools: Tool[] = [
     pagePath: 'word-counter',
     featured: true
   },
+  {
+    id: 'text-diff-checker',
+    name: 'Text Diff Checker',
+    description: 'Compare two texts side-by-side and see the differences highlighted. Free, fast, and completely private.',
+    icon: '🔍',
+    category: 'text',
+    href: '/tools/text-diff-checker',
+    pagePath: 'text-diff-checker',
+    featured: true
+  },
 ]
 
 export const categories = [

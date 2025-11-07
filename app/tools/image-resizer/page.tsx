@@ -29,11 +29,20 @@ export const metadata: Metadata = {
       'Resize images to any dimensions. Free, fast, and secure. All processing happens in your browser - no upload required.',
     type: 'website',
     url: `${siteConfig.url}/tools/image-resizer`,
+    images: [
+      {
+        url: `${siteConfig.url}/og-images/image-resizer.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'Image Resizer Tool',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Image Resizer - Resize Images Online Free',
     description: 'Resize images to any dimensions. Free, fast, and secure. Works in your browser.',
+    images: [`${siteConfig.url}/og-images/image-resizer.svg`],
   },
   alternates: {
     canonical: `${siteConfig.url}/tools/image-resizer`,

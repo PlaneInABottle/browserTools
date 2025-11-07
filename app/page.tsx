@@ -29,11 +29,20 @@ export const metadata: Metadata = {
     description: 'Quick & simple browser utilities. All processing happens in your browser. 100% free and private.',
     type: 'website',
     url: siteConfig.url,
+    images: [
+      {
+        url: `${siteConfig.url}/og-image.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'Toolympics - Free Browser Tools',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Toolympics - Free Browser Tools',
     description: 'Quick & simple browser utilities. 100% free and private.',
+    images: [`${siteConfig.url}/og-image.svg`],
   },
   alternates: {
     canonical: siteConfig.url,

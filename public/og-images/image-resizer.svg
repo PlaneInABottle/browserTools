@@ -1,0 +1,16 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#eff6ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f3e8ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="200" cy="315" r="100" fill="#3b82f6" opacity="0.1"/>
+  <text x="200" y="365" font-family="system-ui" font-size="120" fill="#3b82f6" text-anchor="middle">🖼️</text>
+  <text x="380" y="280" font-family="system-ui" font-size="72" font-weight="bold" fill="#1e293b">Image Resizer</text>
+  <text x="380" y="360" font-family="system-ui" font-size="36" fill="#64748b">Resize &amp; Convert Images Online</text>
+  <text x="380" y="430" font-family="system-ui" font-size="28" fill="#475569">✓ Batch Processing</text>
+  <text x="650" y="430" font-family="system-ui" font-size="28" fill="#475569">✓ Quality Control</text>
+  <text x="930" y="430" font-family="system-ui" font-size="28" fill="#475569">✓ Private</text>
+</svg>

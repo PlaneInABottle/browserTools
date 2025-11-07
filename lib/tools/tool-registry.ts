@@ -60,6 +60,16 @@ export const tools: Tool[] = [
     pagePath: 'json-formatter',
     featured: true
   },
+  {
+    id: 'pdf-merger',
+    name: 'PDF Merger',
+    description: 'Combine multiple PDF files into one document. Free, fast, and secure. All processing happens in your browser.',
+    icon: '📄',
+    category: 'pdf',
+    href: '/tools/pdf-merger',
+    pagePath: 'pdf-merger',
+    featured: true
+  },
 ]
 
 export const categories = [

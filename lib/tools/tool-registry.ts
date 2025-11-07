@@ -70,6 +70,16 @@ export const tools: Tool[] = [
     pagePath: 'pdf-merger',
     featured: true
   },
+  {
+    id: 'image-resizer',
+    name: 'Image Resizer',
+    description: 'Resize images to any dimensions with quality control and format conversion. Batch process multiple images. 100% private.',
+    icon: '🖼️',
+    category: 'image',
+    href: '/tools/image-resizer',
+    pagePath: 'image-resizer',
+    featured: true
+  },
 ]
 
 export const categories = [

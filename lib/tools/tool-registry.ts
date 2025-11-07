@@ -50,6 +50,16 @@ export const tools: Tool[] = [
     pagePath: 'markdown-to-html',
     featured: true
   },
+  {
+    id: 'json-formatter',
+    name: 'JSON Formatter',
+    description: 'Format, validate, and beautify JSON instantly. Find errors, minify, and convert with ease. Free and works offline.',
+    icon: '{ }',
+    category: 'text',
+    href: '/tools/json-formatter',
+    pagePath: 'json-formatter',
+    featured: true
+  },
 ]
 
 export const categories = [

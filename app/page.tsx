@@ -1,12 +1,97 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { tools, categories } from '@/lib/tools/tool-registry'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { siteConfig } from '@/lib/config/site'
+import { getHomePageLastModified } from '@/lib/utils/git-dates'
+
+export const metadata: Metadata = {
+  title: 'Toolympics - Free Online Browser Tools | Privacy-First Utilities',
+  description: 'Free online tools for everyday tasks. Speech to text, PDF merger, image resizer, word counter, and more. All tools run in your browser - 100% private, no uploads.',
+  keywords: [
+    'free online tools',
+    'browser utilities',
+    'privacy tools',
+    'speech to text',
+    'pdf merger',
+    'image resizer',
+    'word counter',
+    'text diff checker',
+    'markdown converter',
+    'json formatter',
+    'client-side tools',
+    'no upload tools',
+  ],
+  openGraph: {
+    title: 'Toolympics - Free Browser Tools',
+    description: 'Quick & simple browser utilities. All processing happens in your browser. 100% free and private.',
+    type: 'website',
+    url: siteConfig.url,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Toolympics - Free Browser Tools',
+    description: 'Quick & simple browser utilities. 100% free and private.',
+  },
+  alternates: {
+    canonical: siteConfig.url,
+  },
+}
 
 export default function Home() {
+  const lastModified = getHomePageLastModified()
+  
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        name: siteConfig.name,
+        url: siteConfig.url,
+        description: siteConfig.description,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${siteConfig.url}/?q={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      },
+      {
+        '@type': 'ItemList',
+        name: 'Available Tools',
+        description: 'Free online browser tools',
+        numberOfItems: tools.length,
+        itemListElement: tools.map((tool, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'SoftwareApplication',
+            name: tool.name,
+            url: `${siteConfig.url}${tool.href}`,
+            description: tool.description,
+            applicationCategory: 'UtilityApplication',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'USD',
+            },
+          },
+        })),
+      },
+    ],
+  }
+  
   return (
-    <div className="max-w-6xl mx-auto">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="max-w-6xl mx-auto">
       {/* Hero Section */}
       <section className="text-center py-16">
         <h1 className="text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
@@ -103,6 +188,7 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
-    </div>
+      </div>
+    </>
   )
 }

@@ -63,14 +63,15 @@ export default function VideoToGif() {
     }
   }, [])
 
-  // Cleanup all video preview URLs on unmount
+  // Cleanup all video preview URLs only on component unmount (not on videos array changes)
   useEffect(() => {
     return () => {
       videos.forEach((video) => {
         URL.revokeObjectURL(video.preview)
       })
     }
-  }, [videos])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []) // Empty deps - only run on unmount
 
   // Cleanup preview GIF URL
   useEffect(() => {

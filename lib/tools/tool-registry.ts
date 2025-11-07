@@ -40,6 +40,16 @@ export const tools: Tool[] = [
     pagePath: 'text-diff-checker',
     featured: true
   },
+  {
+    id: 'markdown-to-html',
+    name: 'Markdown to HTML',
+    description: 'Convert Markdown to HTML instantly with live preview. Free, fast, and works offline.',
+    icon: '📄',
+    category: 'text',
+    href: '/tools/markdown-to-html',
+    pagePath: 'markdown-to-html',
+    featured: true
+  },
 ]
 
 export const categories = [

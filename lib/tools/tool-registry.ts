@@ -100,6 +100,16 @@ export const tools: Tool[] = [
      pagePath: 'case-converter',
      featured: true
    },
+   {
+     id: 'password-generator',
+     name: 'Password Generator',
+     description: 'Generate strong, secure passwords with customizable length and character options. Cryptographically secure, works offline, no data collection.',
+     icon: '🔐',
+     category: 'text',
+     href: '/tools/password-generator',
+     pagePath: 'password-generator',
+     featured: true
+   },
 ]
 
 export const categories = [

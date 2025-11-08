@@ -1,0 +1,41 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#gradient)"/>
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Pattern -->
+  <g opacity="0.1">
+    <text x="100" y="150" font-family="Arial, sans-serif" font-size="120" fill="white">Aa</text>
+    <text x="900" y="200" font-family="Arial, sans-serif" font-size="80" fill="white">Bb</text>
+    <text x="200" y="400" font-family="Arial, sans-serif" font-size="100" fill="white">Cc</text>
+    <text x="800" y="450" font-family="Arial, sans-serif" font-size="90" fill="white">Dd</text>
+  </g>
+
+  <!-- Main Content -->
+  <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">
+    Case Converter
+  </text>
+
+  <text x="600" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#cbd5e1">
+    Convert text between different cases instantly
+  </text>
+
+  <!-- Example Text -->
+  <rect x="400" y="400" width="400" height="80" rx="8" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="420" y="430" font-family="monospace" font-size="18" fill="#e2e8f0">
+    hello world → HELLO WORLD
+  </text>
+  <text x="420" y="455" font-family="monospace" font-size="18" fill="#e2e8f0">
+    hello world → helloWorld
+  </text>
+
+  <!-- Toolympics Branding -->
+  <text x="600" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#94a3b8">
+    Toolympics
+  </text>
+</svg>

@@ -80,16 +80,26 @@ export const tools: Tool[] = [
     pagePath: 'image-resizer',
     featured: true
   },
-  {
-    id: 'video-to-gif',
-    name: 'Video to GIF',
-    description: 'Convert videos to animated GIFs with customizable quality, frame rate, and dimensions. Trim clips and adjust settings. 100% private.',
-    icon: '🎬',
-    category: 'video',
-    href: '/tools/video-to-gif',
-    pagePath: 'video-to-gif',
-    featured: true
-  },
+   {
+     id: 'video-to-gif',
+     name: 'Video to GIF',
+     description: 'Convert videos to animated GIFs with customizable quality, frame rate, and dimensions. Trim clips and adjust settings. 100% private.',
+     icon: '🎬',
+     category: 'video',
+     href: '/tools/video-to-gif',
+     pagePath: 'video-to-gif',
+     featured: true
+   },
+   {
+     id: 'case-converter',
+     name: 'Case Converter',
+     description: 'Convert text between different cases instantly. Supports uppercase, lowercase, title case, camelCase, snake_case, and more. Free and works offline.',
+     icon: '🔄',
+     category: 'text',
+     href: '/tools/case-converter',
+     pagePath: 'case-converter',
+     featured: true
+   },
 ]
 
 export const categories = [

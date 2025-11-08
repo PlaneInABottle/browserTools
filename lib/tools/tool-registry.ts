@@ -110,16 +110,26 @@ export const tools: Tool[] = [
      pagePath: 'case-converter',
      featured: true
    },
-   {
-     id: 'password-generator',
-     name: 'Password Generator',
-     description: 'Generate strong, secure passwords with customizable length and character options. Cryptographically secure, works offline, no data collection.',
-     icon: '🔐',
-     category: 'text',
-     href: '/tools/password-generator',
-     pagePath: 'password-generator',
-     featured: true
-   },
+    {
+      id: 'password-generator',
+      name: 'Password Generator',
+      description: 'Generate strong, secure passwords with customizable length and character options. Cryptographically secure, works offline, no data collection.',
+      icon: '🔐',
+      category: 'text',
+      href: '/tools/password-generator',
+      pagePath: 'password-generator',
+      featured: true
+    },
+    {
+      id: 'uuid-generator',
+      name: 'UUID Generator',
+      description: 'Generate RFC 4122 compliant UUIDs instantly. Create single or batch UUIDs with multiple format options. Free, fast, and works offline.',
+      icon: '🆔',
+      category: 'text',
+      href: '/tools/uuid-generator',
+      pagePath: 'uuid-generator',
+      featured: true
+    },
 ]
 
 export const categories = [

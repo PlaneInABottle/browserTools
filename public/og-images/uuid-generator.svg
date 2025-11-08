@@ -1,0 +1,64 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#gradient)"/>
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background UUID Pattern -->
+  <g opacity="0.1">
+    <!-- UUID-like blocks -->
+    <rect x="100" y="100" width="80" height="40" rx="4" fill="#10b981"/>
+    <rect x="200" y="100" width="80" height="40" rx="4" fill="#10b981"/>
+    <rect x="300" y="100" width="80" height="40" rx="4" fill="#10b981"/>
+    <rect x="400" y="100" width="80" height="40" rx="4" fill="#10b981"/>
+    <rect x="100" y="160" width="160" height="40" rx="4" fill="#10b981"/>
+    <rect x="280" y="160" width="120" height="40" rx="4" fill="#10b981"/>
+    <rect x="420" y="160" width="120" height="40" rx="4" fill="#10b981"/>
+    <rect x="100" y="220" width="120" height="40" rx="4" fill="#10b981"/>
+    <rect x="240" y="220" width="160" height="40" rx="4" fill="#10b981"/>
+    <rect x="420" y="220" width="120" height="40" rx="4" fill="#10b981"/>
+    <rect x="100" y="280" width="80" height="40" rx="4" fill="#10b981"/>
+    <rect x="200" y="280" width="80" height="40" rx="4" fill="#10b981"/>
+    <rect x="300" y="280" width="80" height="40" rx="4" fill="#10b981"/>
+    <rect x="400" y="280" width="80" height="40" rx="4" fill="#10b981"/>
+  </g>
+
+  <!-- Main Content -->
+  <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">
+    UUID Generator
+  </text>
+
+  <text x="600" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#cbd5e1">
+    Generate RFC 4122 compliant UUIDs instantly
+  </text>
+
+  <!-- UUID Example -->
+  <rect x="350" y="400" width="500" height="60" rx="8" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)" stroke-width="2"/>
+  <text x="370" y="425" font-family="monospace" font-size="18" fill="#10b981">
+    550e8400-e29b-41d4-a716-446655440000
+  </text>
+  <text x="370" y="445" font-family="Arial, sans-serif" font-size="12" fill="#6ee7b7">
+    RFC 4122 v4 • Cryptographically Secure
+  </text>
+
+  <!-- Features -->
+  <g transform="translate(400, 500)">
+    <circle cx="0" cy="0" r="8" fill="#10b981"/>
+    <text x="20" y="5" font-family="Arial, sans-serif" font-size="16" fill="#10b981">Batch Generation</text>
+
+    <circle cx="200" cy="0" r="8" fill="#10b981"/>
+    <text x="220" y="5" font-family="Arial, sans-serif" font-size="16" fill="#10b981">Multiple Formats</text>
+
+    <circle cx="400" cy="0" r="8" fill="#10b981"/>
+    <text x="420" y="5" font-family="Arial, sans-serif" font-size="16" fill="#10b981">RFC Compliant</text>
+  </g>
+
+  <!-- Toolympics Branding -->
+  <text x="600" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#94a3b8">
+    Toolympics
+  </text>
+</svg>

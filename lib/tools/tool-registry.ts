@@ -70,16 +70,26 @@ export const tools: Tool[] = [
     pagePath: 'pdf-merger',
     featured: true
   },
-  {
-    id: 'image-resizer',
-    name: 'Image Resizer',
-    description: 'Resize images to any dimensions with quality control and format conversion. Batch process multiple images. 100% private.',
-    icon: '🖼️',
-    category: 'image',
-    href: '/tools/image-resizer',
-    pagePath: 'image-resizer',
-    featured: true
-  },
+   {
+     id: 'image-resizer',
+     name: 'Image Resizer',
+     description: 'Resize images to any dimensions with quality control and format conversion. Batch process multiple images. 100% private.',
+     icon: '🖼️',
+     category: 'image',
+     href: '/tools/image-resizer',
+     pagePath: 'image-resizer',
+     featured: true
+   },
+   {
+     id: 'qr-code-generator',
+     name: 'QR Code Generator',
+     description: 'Generate QR codes from text and URLs instantly. Customizable size and error correction. Free, fast, and works offline.',
+     icon: '📱',
+     category: 'image',
+     href: '/tools/qr-code-generator',
+     pagePath: 'qr-code-generator',
+     featured: true
+   },
    {
      id: 'video-to-gif',
      name: 'Video to GIF',

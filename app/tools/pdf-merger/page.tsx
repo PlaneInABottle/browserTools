@@ -6,7 +6,7 @@ import { siteConfig } from '@/lib/config/site'
 const lastModified = getToolPageLastModified('pdf-merger')
 
 export const metadata: Metadata = {
-  title: 'PDF Merger - Combine Multiple PDFs Online Free | QuickTools',
+  title: 'PDF Merger - Combine Multiple PDFs Online Free | Toolympics',
   description: 'Merge multiple PDF files into one document online. Free, fast, and secure. All processing happens in your browser - no upload required. Combine unlimited PDFs instantly.',
   keywords: [
     'pdf merger',
@@ -25,11 +25,20 @@ export const metadata: Metadata = {
     description: 'Merge multiple PDF files into one document. Free, fast, and secure. All processing happens in your browser - no upload required.',
     type: 'website',
     url: `${siteConfig.url}/tools/pdf-merger`,
+    images: [
+      {
+        url: `${siteConfig.url}/og-images/pdf-merger.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'PDF Merger Tool',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PDF Merger - Combine Multiple PDFs Online Free',
     description: 'Merge multiple PDF files into one document. Free, fast, and secure. Works in your browser.',
+    images: [`${siteConfig.url}/og-images/pdf-merger.svg`],
   },
   alternates: {
     canonical: `${siteConfig.url}/tools/pdf-merger`,

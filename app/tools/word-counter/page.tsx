@@ -4,9 +4,12 @@ import WordCounter from '@/components/tools/WordCounter'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/lib/config/site'
+import { getToolPageLastModified } from '@/lib/utils/git-dates'
+
+const lastModified = getToolPageLastModified('word-counter')
 
 export const metadata: Metadata = {
-  title: 'Word Counter - Free Character & Sentence Counter Online',
+  title: 'Word Counter - Free Character & Sentence Counter Online | Toolympics',
   description: 'Free online word counter tool. Count words, characters, sentences, paragraphs, and get reading time estimates instantly. Works offline, no data collection.',
   keywords: [
     'word counter',
@@ -23,16 +26,27 @@ export const metadata: Metadata = {
     'keyword density',
   ],
   openGraph: {
-    title: 'Word Counter - Free Online Tool',
+    title: 'Word Counter - Free Character & Sentence Counter Online',
     description: 'Count words, characters, sentences instantly. Free, fast, and completely private.',
     type: 'website',
     url: `${siteConfig.url}/tools/word-counter`,
+    images: [
+      {
+        url: `${siteConfig.url}/og-images/word-counter.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'Word Counter Tool',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Word Counter - Free Character & Sentence Counter Online',
+    description: 'Count words, characters, sentences instantly. Free, fast, and completely private.',
+    images: [`${siteConfig.url}/og-images/word-counter.svg`],
   },
   alternates: {
     canonical: `${siteConfig.url}/tools/word-counter`,
-    languages: {
-      'en-US': `${siteConfig.url}/tools/word-counter`,
-    },
   },
 }
 
@@ -54,6 +68,7 @@ export default function WordCounterPage() {
           priceCurrency: 'USD',
         },
         description: 'Free online word counter. Count words, characters, sentences, and get reading time estimates.',
+        dateModified: lastModified.toISOString(),
         featureList: [
           'Real-time word counting',
           'Character count with and without spaces',
@@ -64,6 +79,7 @@ export default function WordCounterPage() {
           'Works offline',
           'No data collection'
         ],
+        browserRequirements: 'Requires JavaScript. Works in modern browsers (Chrome, Firefox, Safari, Edge).',
       },
       {
         '@type': 'HowTo',

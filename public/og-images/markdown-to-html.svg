@@ -1,0 +1,41 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="60" y="60" width="1080" height="510" rx="24" fill="#1e293b"/>
+
+  <!-- Markdown panel -->
+  <rect x="120" y="120" width="450" height="390" rx="12" fill="#334155"/>
+  <text x="345" y="155" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Markdown</text>
+  <text x="140" y="200" fill="#a78bfa" font-family="Courier New, monospace" font-size="14"># Heading</text>
+  <text x="140" y="230" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">**bold** *italic*</text>
+  <text x="140" y="260" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">- List item</text>
+  <text x="140" y="290" fill="#a78bfa" font-family="Courier New, monospace" font-size="14">## Subheading</text>
+  <text x="140" y="320" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">[Link](url)</text>
+  <text x="140" y="350" fill="#10b981" font-family="Courier New, monospace" font-size="14">`code`</text>
+
+  <!-- Arrow -->
+  <path d="M590 315 L620 315" stroke="#64748b" stroke-width="4" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- HTML panel -->
+  <rect x="630" y="120" width="450" height="390" rx="12" fill="#334155"/>
+  <text x="855" y="155" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18" font-weight="bold">HTML</text>
+  <text x="650" y="200" fill="#f472b6" font-family="Courier New, monospace" font-size="14">&lt;h1&gt;Heading&lt;/h1&gt;</text>
+  <text x="650" y="230" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">&lt;strong&gt;bold&lt;/strong&gt;</text>
+  <text x="650" y="260" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">&lt;ul&gt;&lt;li&gt;List&lt;/li&gt;</text>
+  <text x="650" y="290" fill="#f472b6" font-family="Courier New, monospace" font-size="14">&lt;h2&gt;Subheading&lt;/h2&gt;</text>
+  <text x="650" y="320" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">&lt;a href...&gt;Link&lt;/a&gt;</text>
+  <text x="650" y="350" fill="#10b981" font-family="Courier New, monospace" font-size="14">&lt;code&gt;code&lt;/code&gt;</text>
+
+  <!-- Title -->
+  <text x="600" y="90" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="48" font-weight="bold">Markdown to HTML</text>
+
+  <!-- Features -->
+  <text x="600" y="560" text-anchor="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">Convert Markdown to HTML • Live preview • GFM support • Copy or download • 100% private</text>
+
+  <!-- URL -->
+  <text x="600" y="590" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="16">toolympics.com/tools/markdown-to-html</text>
+</svg>

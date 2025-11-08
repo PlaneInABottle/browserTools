@@ -4,9 +4,12 @@ import TextDiffChecker from '@/components/tools/TextDiffChecker'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/lib/config/site'
+import { getToolPageLastModified } from '@/lib/utils/git-dates'
+
+const lastModified = getToolPageLastModified('text-diff-checker')
 
 export const metadata: Metadata = {
-  title: 'Text Diff Checker - Free Online Text Comparison Tool',
+  title: 'Text Diff Checker - Free Online Text Comparison Tool | Toolympics',
   description: 'Compare two texts and see differences highlighted. Free online diff checker with side-by-side view, word-level comparison, and download options. Works offline, no data collection.',
   keywords: [
     'text diff checker',
@@ -23,16 +26,27 @@ export const metadata: Metadata = {
     'text analyzer',
   ],
   openGraph: {
-    title: 'Text Diff Checker - Compare Texts Online',
+    title: 'Text Diff Checker - Free Online Text Comparison Tool',
     description: 'Compare two texts side-by-side and see differences highlighted. Free, fast, and completely private.',
     type: 'website',
     url: `${siteConfig.url}/tools/text-diff-checker`,
+    images: [
+      {
+        url: `${siteConfig.url}/og-images/text-diff-checker.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'Text Diff Checker Tool',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Text Diff Checker - Free Online Text Comparison Tool',
+    description: 'Compare two texts side-by-side and see differences highlighted. Free, fast, and completely private.',
+    images: [`${siteConfig.url}/og-images/text-diff-checker.svg`],
   },
   alternates: {
     canonical: `${siteConfig.url}/tools/text-diff-checker`,
-    languages: {
-      'en-US': `${siteConfig.url}/tools/text-diff-checker`,
-    },
   },
 }
 
@@ -54,6 +68,7 @@ export default function TextDiffCheckerPage() {
           priceCurrency: 'USD',
         },
         description: 'Free online text comparison tool. Compare two texts and see differences highlighted.',
+        dateModified: lastModified.toISOString(),
         featureList: [
           'Side-by-side text comparison',
           'Character, word, and line-level diffs',
@@ -64,6 +79,7 @@ export default function TextDiffCheckerPage() {
           'Works offline',
           'No data collection'
         ],
+        browserRequirements: 'Requires JavaScript. Works in modern browsers (Chrome, Firefox, Safari, Edge).',
       },
       {
         '@type': 'HowTo',

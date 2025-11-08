@@ -1,0 +1,48 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="60" y="60" width="1080" height="510" rx="24" fill="#1e293b"/>
+
+  <!-- PDF icons (multiple) -->
+  <g transform="translate(200, 180)">
+    <rect x="0" y="0" width="80" height="100" rx="8" fill="#ef4444" opacity="0.9"/>
+    <text x="40" y="55" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">PDF</text>
+  </g>
+  <g transform="translate(295, 180)">
+    <rect x="0" y="0" width="80" height="100" rx="8" fill="#ef4444" opacity="0.9"/>
+    <text x="40" y="55" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">PDF</text>
+  </g>
+  <g transform="translate(390, 180)">
+    <rect x="0" y="0" width="80" height="100" rx="8" fill="#ef4444" opacity="0.9"/>
+    <text x="40" y="55" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">PDF</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M520 230 L580 230" stroke="#64748b" stroke-width="4" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Merged PDF -->
+  <g transform="translate(680, 180)">
+    <rect x="0" y="0" width="120" height="150" rx="8" fill="#10b981"/>
+    <text x="60" y="80" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="20" font-weight="bold">PDF</text>
+    <rect x="15" y="100" width="90" height="3" rx="1.5" fill="white" opacity="0.7"/>
+    <rect x="15" y="110" width="90" height="3" rx="1.5" fill="white" opacity="0.7"/>
+    <rect x="15" y="120" width="90" height="3" rx="1.5" fill="white" opacity="0.7"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="110" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="48" font-weight="bold">PDF Merger</text>
+  <text x="600" y="150" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="24">Combine Multiple PDFs</text>
+
+  <!-- Features -->
+  <text x="600" y="400" text-anchor="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">Merge unlimited PDF files</text>
+  <text x="600" y="430" text-anchor="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">Drag to reorder pages</text>
+  <text x="600" y="460" text-anchor="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">No file size limits</text>
+  <text x="600" y="490" text-anchor="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">100% private & browser-based</text>
+
+  <!-- URL -->
+  <text x="600" y="580" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="16">toolympics.com/tools/pdf-merger</text>
+</svg>

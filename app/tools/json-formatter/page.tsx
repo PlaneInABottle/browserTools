@@ -4,9 +4,12 @@ import JsonFormatter from '@/components/tools/JsonFormatter'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/lib/config/site'
+import { getToolPageLastModified } from '@/lib/utils/git-dates'
+
+const lastModified = getToolPageLastModified('json-formatter')
 
 export const metadata: Metadata = {
-  title: 'JSON Formatter & Validator - Free Online Tool',
+  title: 'JSON Formatter & Validator - Free Online Tool | Toolympics',
   description: 'Format, validate, and beautify JSON online. Find errors, minify JSON, convert to tree view, and more. Free, fast, and works offline.',
   keywords: [
     'json formatter',
@@ -23,16 +26,27 @@ export const metadata: Metadata = {
     'json tree view',
   ],
   openGraph: {
-    title: 'JSON Formatter & Validator - Free Tool',
+    title: 'JSON Formatter & Validator - Free Online Tool',
     description: 'Format, validate, and beautify JSON instantly. Find errors, minify, and convert. Free and private.',
     type: 'website',
     url: `${siteConfig.url}/tools/json-formatter`,
+    images: [
+      {
+        url: `${siteConfig.url}/og-images/json-formatter.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'JSON Formatter & Validator Tool',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'JSON Formatter & Validator - Free Online Tool',
+    description: 'Format, validate, and beautify JSON instantly. Find errors, minify, and convert. Free and private.',
+    images: [`${siteConfig.url}/og-images/json-formatter.svg`],
   },
   alternates: {
     canonical: `${siteConfig.url}/tools/json-formatter`,
-    languages: {
-      'en-US': `${siteConfig.url}/tools/json-formatter`,
-    },
   },
 }
 
@@ -54,6 +68,7 @@ export default function JsonFormatterPage() {
           priceCurrency: 'USD',
         },
         description: 'Free online JSON formatter and validator with syntax highlighting.',
+        dateModified: lastModified.toISOString(),
         featureList: [
           'Format and beautify JSON',
           'Validate JSON syntax',
@@ -65,6 +80,7 @@ export default function JsonFormatterPage() {
           'Works offline',
           'No data collection'
         ],
+        browserRequirements: 'Requires JavaScript. Works in modern browsers (Chrome, Firefox, Safari, Edge).',
       },
       {
         '@type': 'HowTo',

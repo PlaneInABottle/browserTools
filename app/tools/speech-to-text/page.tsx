@@ -4,9 +4,12 @@ import SpeechToTextTool from '@/components/tools/SpeechToText'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/lib/config/site'
+import { getToolPageLastModified } from '@/lib/utils/git-dates'
+
+const lastModified = getToolPageLastModified('speech-to-text')
 
 export const metadata: Metadata = {
-  title: 'Speech to Text Converter',
+  title: 'Speech to Text Converter - Free AI Transcription Online | Toolympics',
   description: 'Free browser-based speech-to-text converter. Record audio and get instant AI-powered transcriptions. Private and secure - everything runs in your browser.',
   keywords: [
     'speech to text',
@@ -20,19 +23,27 @@ export const metadata: Metadata = {
     'offline transcription',
   ],
   openGraph: {
-    title: 'Speech to Text Converter - Free & Private',
+    title: 'Speech to Text Converter - Free AI Transcription Online',
     description: 'Convert speech to text instantly with AI. Free, fast, and completely private.',
     type: 'website',
     url: `${siteConfig.url}/tools/speech-to-text`,
+    images: [
+      {
+        url: `${siteConfig.url}/og-images/speech-to-text.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'Speech to Text Converter Tool',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Speech to Text Converter - Free AI Transcription Online',
+    description: 'Convert speech to text instantly with AI. Free, fast, and completely private.',
+    images: [`${siteConfig.url}/og-images/speech-to-text.svg`],
   },
   alternates: {
     canonical: `${siteConfig.url}/tools/speech-to-text`,
-    languages: {
-      'en-US': `${siteConfig.url}/tools/speech-to-text`,
-      // Add more when internationalization is ready:
-      // 'es': `${siteConfig.url}/es/tools/speech-to-text`,
-      // 'fr': `${siteConfig.url}/fr/tools/speech-to-text`,
-    },
   },
 }
 
@@ -55,6 +66,15 @@ export default function SpeechToTextPage() {
           priceCurrency: 'USD',
         },
         description: 'Free browser-based speech-to-text converter using AI. Private and secure - everything runs in your browser.',
+        dateModified: lastModified.toISOString(),
+        featureList: [
+          'Record audio or upload files',
+          'Choose AI model (Tiny, Base, Small)',
+          'Offline transcription after first download',
+          'Multiple language support',
+          'No file upload - 100% client-side',
+        ],
+        browserRequirements: 'Requires JavaScript. Works in modern browsers (Chrome, Firefox, Safari, Edge).',
       },
       {
         '@type': 'HowTo',

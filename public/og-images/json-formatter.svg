@@ -1,0 +1,44 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="60" y="60" width="1080" height="510" rx="24" fill="#1e293b"/>
+
+  <!-- Before (minified) panel -->
+  <rect x="120" y="120" width="450" height="390" rx="12" fill="#334155"/>
+  <text x="345" y="155" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Minified</text>
+  <text x="140" y="200" fill="#cbd5e1" font-family="Courier New, monospace" font-size="12">{"name":"John","age":30</text>
+  <text x="140" y="220" fill="#cbd5e1" font-family="Courier New, monospace" font-size="12">,"city":"NYC","tags":["</text>
+  <text x="140" y="240" fill="#cbd5e1" font-family="Courier New, monospace" font-size="12">developer","coder"],"a</text>
+  <text x="140" y="260" fill="#cbd5e1" font-family="Courier New, monospace" font-size="12">ctive":true}</text>
+
+  <!-- Arrow -->
+  <path d="M590 315 L620 315" stroke="#64748b" stroke-width="4" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- After (formatted) panel -->
+  <rect x="630" y="120" width="450" height="390" rx="12" fill="#1e40af"/>
+  <text x="855" y="155" text-anchor="middle" fill="#93c5fd" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Formatted</text>
+  <text x="650" y="200" fill="#fbbf24" font-family="Courier New, monospace" font-size="14">{</text>
+  <text x="670" y="225" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">"name": "John",</text>
+  <text x="670" y="250" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">"age": 30,</text>
+  <text x="670" y="275" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">"city": "NYC",</text>
+  <text x="670" y="300" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">"tags": [...]</text>
+  <text x="670" y="325" fill="#cbd5e1" font-family="Courier New, monospace" font-size="14">"active": true</text>
+  <text x="650" y="350" fill="#fbbf24" font-family="Courier New, monospace" font-size="14">}</text>
+
+  <!-- Checkmark -->
+  <circle cx="1030" cy="160" r="20" fill="#10b981"/>
+  <path d="M1022 160 L1028 166 L1040 154" stroke="white" stroke-width="3" fill="none"/>
+
+  <!-- Title -->
+  <text x="600" y="90" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="48" font-weight="bold">JSON Formatter</text>
+
+  <!-- Features -->
+  <text x="600" y="560" text-anchor="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">Format & validate JSON • Minify • Tree view • Error detection • 100% private</text>
+
+  <!-- URL -->
+  <text x="600" y="590" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="16">toolympics.com/tools/json-formatter</text>
+</svg>

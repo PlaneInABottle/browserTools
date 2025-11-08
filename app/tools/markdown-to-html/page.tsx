@@ -4,9 +4,12 @@ import MarkdownToHtml from '@/components/tools/MarkdownToHtml'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/lib/config/site'
+import { getToolPageLastModified } from '@/lib/utils/git-dates'
+
+const lastModified = getToolPageLastModified('markdown-to-html')
 
 export const metadata: Metadata = {
-  title: 'Markdown to HTML Converter - Free Online Tool',
+  title: 'Markdown to HTML Converter - Free Online Tool | Toolympics',
   description: 'Convert Markdown to HTML instantly with live preview. Supports GitHub Flavored Markdown, tables, code blocks, and more. Free, fast, and works offline.',
   keywords: [
     'markdown to html',
@@ -21,16 +24,27 @@ export const metadata: Metadata = {
     'gfm converter',
   ],
   openGraph: {
-    title: 'Markdown to HTML Converter - Free Tool',
+    title: 'Markdown to HTML Converter - Free Online Tool',
     description: 'Convert Markdown to HTML with live preview. Supports GFM, tables, code blocks. Free and private.',
     type: 'website',
     url: `${siteConfig.url}/tools/markdown-to-html`,
+    images: [
+      {
+        url: `${siteConfig.url}/og-images/markdown-to-html.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'Markdown to HTML Converter Tool',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Markdown to HTML Converter - Free Online Tool',
+    description: 'Convert Markdown to HTML with live preview. Supports GFM, tables, code blocks. Free and private.',
+    images: [`${siteConfig.url}/og-images/markdown-to-html.svg`],
   },
   alternates: {
     canonical: `${siteConfig.url}/tools/markdown-to-html`,
-    languages: {
-      'en-US': `${siteConfig.url}/tools/markdown-to-html`,
-    },
   },
 }
 
@@ -52,6 +66,7 @@ export default function MarkdownToHtmlPage() {
           priceCurrency: 'USD',
         },
         description: 'Free online Markdown to HTML converter with live preview.',
+        dateModified: lastModified.toISOString(),
         featureList: [
           'Real-time Markdown to HTML conversion',
           'GitHub Flavored Markdown support',
@@ -62,6 +77,7 @@ export default function MarkdownToHtmlPage() {
           'Works offline',
           'No data collection'
         ],
+        browserRequirements: 'Requires JavaScript. Works in modern browsers (Chrome, Firefox, Safari, Edge).',
       },
       {
         '@type': 'HowTo',

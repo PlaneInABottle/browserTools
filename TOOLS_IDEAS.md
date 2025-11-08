@@ -5,21 +5,21 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 ## **Text Tools** 📝
 
 - **Word Counter** - Count words, characters, sentences, reading time ✅ IMPLEMENTED
-- **Text Diff Checker** - Compare two texts side-by-side
+- **Text Diff Checker** - Compare two texts side-by-side ✅ IMPLEMENTED
 - **Case Converter** - Convert between upper, lower, title, camel case
 - **Lorem Ipsum Generator** - Generate placeholder text
-- **Markdown to HTML** - Convert markdown to HTML
+- **Markdown to HTML** - Convert markdown to HTML ✅ IMPLEMENTED
 - **Text Encryptor/Decryptor** - Simple encryption for text
 - **Remove Duplicate Lines** - Clean up text files
 - **Text to Speech** - Browser TTS for reading text aloud
-- **JSON Formatter** - Format and validate JSON
+- **JSON Formatter** - Format and validate JSON ✅ IMPLEMENTED
 - **Base64 Encoder/Decoder** - Encode/decode Base64
 - **URL Encoder/Decoder** - Encode/decode URLs
 - **Hash Generator** - MD5, SHA-1, SHA-256 hashes
 
 ## **Image Tools** 🖼️
 
-- **Image Resizer** - Resize images to specific dimensions
+- **Image Resizer** - Resize images to specific dimensions ✅ IMPLEMENTED
 - **Image Compressor** - Reduce file size while maintaining quality
 - **Image Format Converter** - Convert JPG/PNG/WEBP/GIF
 - **Image Cropper** - Crop images to custom dimensions
@@ -32,7 +32,7 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 
 ## **PDF Tools** 📄
 
-- **PDF Merger** - Combine multiple PDFs
+- **PDF Merger** - Combine multiple PDFs ✅ IMPLEMENTED
 - **PDF Splitter** - Split PDF into separate pages
 - **PDF to Images** - Convert PDF pages to JPG/PNG
 - **Images to PDF** - Combine images into a PDF
@@ -41,7 +41,7 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 ## **Video Tools** 🎬
 
 - **Video Trimmer** - Cut video clips
-- **Video to GIF** - Convert video to animated GIF
+- **Video to GIF** - Convert video to animated GIF ✅ IMPLEMENTED
 - **Video Compressor** - Reduce video file size
 - **Frame Extractor** - Extract frames as images
 
@@ -180,8 +180,14 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 
 ---
 
-**Current Status**: 2 tools implemented
+**Current Status**: 8 tools implemented
 - ✅ Speech to Text
 - ✅ Word Counter
+- ✅ Image Resizer
+- ✅ JSON Formatter
+- ✅ Markdown to HTML
+- ✅ PDF Merger
+- ✅ Text Diff Checker
+- ✅ Video to GIF
 
 **Next Recommended**: Case Converter (simple, high utility, easy SEO)

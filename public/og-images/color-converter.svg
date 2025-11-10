@@ -1,0 +1,94 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="colorGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8E72;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="colorGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#44B0A8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="colorGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFC93D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="150" cy="150" r="120" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1050" cy="500" r="150" fill="rgba(255,255,255,0.08)"/>
+
+  <!-- Color swatches -->
+  <rect x="150" y="200" width="120" height="120" rx="12" fill="url(#colorGradient1)"/>
+  <rect x="350" y="200" width="120" height="120" rx="12" fill="url(#colorGradient2)"/>
+  <rect x="550" y="200" width="120" height="120" rx="12" fill="url(#colorGradient3)"/>
+
+  <!-- Color hex codes background -->
+  <rect x="150" y="350" width="520" height="120" rx="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+
+  <!-- HEX Label -->
+  <text x="170" y="385" font-size="18" font-weight="bold" fill="white" font-family="Arial, sans-serif">
+    HEX
+  </text>
+  <text x="170" y="415" font-size="24" font-family="monospace" fill="rgba(255,255,255,0.9)">
+    #FF6B6B
+  </text>
+
+  <!-- RGB Label -->
+  <text x="350" y="385" font-size="18" font-weight="bold" fill="white" font-family="Arial, sans-serif">
+    RGB
+  </text>
+  <text x="350" y="415" font-size="24" font-family="monospace" fill="rgba(255,255,255,0.9)">
+    rgb(255, 107, 107)
+  </text>
+
+  <!-- HSL Label -->
+  <text x="590" y="385" font-size="18" font-weight="bold" fill="white" font-family="Arial, sans-serif">
+    HSL
+  </text>
+  <text x="590" y="415" font-size="24" font-family="monospace" fill="rgba(255,255,255,0.9)">
+    hsl(0, 100%, 71%)
+  </text>
+
+  <!-- Main Title -->
+  <text x="750" y="200" font-size="72" font-weight="bold" fill="white" font-family="Arial, sans-serif">
+    Color
+  </text>
+  <text x="750" y="280" font-size="72" font-weight="bold" fill="white" font-family="Arial, sans-serif">
+    Converter
+  </text>
+
+  <!-- Subtitle -->
+  <text x="750" y="350" font-size="28" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif">
+    Convert HEX • RGB • HSL
+  </text>
+
+  <!-- Features -->
+  <text x="750" y="420" font-size="20" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif">
+    ✓ Real-time conversion
+  </text>
+  <text x="750" y="460" font-size="20" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif">
+    ✓ Visual color picker
+  </text>
+  <text x="750" y="500" font-size="20" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif">
+    ✓ Works offline
+  </text>
+
+  <!-- Logo/Icon area -->
+  <text x="150" y="120" font-size="100" text-anchor="middle" dominant-baseline="middle">
+    🎨
+  </text>
+
+  <!-- Footer branding -->
+  <text x="600" y="600" font-size="16" fill="rgba(255,255,255,0.7)" font-family="Arial, sans-serif" text-anchor="middle">
+    Toolympics — Free Online Tools
+  </text>
+</svg>

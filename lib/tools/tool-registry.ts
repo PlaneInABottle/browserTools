@@ -3,7 +3,7 @@ export interface Tool {
   name: string
   description: string
   icon: string
-  category: 'audio' | 'text' | 'image' | 'pdf' | 'video'
+  category: 'audio' | 'text' | 'image' | 'pdf' | 'video' | 'design'
   href: string
   featured?: boolean
   pagePath: string // Path to the page file for git tracking
@@ -130,6 +130,16 @@ export const tools: Tool[] = [
       pagePath: 'uuid-generator',
       featured: true
     },
+    {
+      id: 'color-converter',
+      name: 'Color Converter',
+      description: 'Convert between HEX, RGB, RGBA, HSL, HSLA color formats instantly. Visual color picker, presets, and recent colors history. Free and works offline.',
+      icon: '🎨',
+      category: 'design',
+      href: '/tools/color-converter',
+      pagePath: 'color-converter',
+      featured: true
+    },
 ]
 
 export const categories = [
@@ -139,4 +149,5 @@ export const categories = [
   { id: 'image', name: 'Image', icon: '🖼️' },
   { id: 'pdf', name: 'PDF', icon: '📄' },
   { id: 'video', name: 'Video', icon: '🎬' },
+  { id: 'design', name: 'Design', icon: '🎨' },
 ] as const

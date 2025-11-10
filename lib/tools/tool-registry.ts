@@ -130,17 +130,27 @@ export const tools: Tool[] = [
       pagePath: 'uuid-generator',
       featured: true
     },
-    {
-      id: 'color-converter',
-      name: 'Color Converter',
-      description: 'Convert between HEX, RGB, RGBA, HSL, HSLA color formats instantly. Visual color picker, presets, and recent colors history. Free and works offline.',
-      icon: '🎨',
-      category: 'design',
-      href: '/tools/color-converter',
-      pagePath: 'color-converter',
-      featured: true
-    },
-]
+     {
+       id: 'color-converter',
+       name: 'Color Converter',
+       description: 'Convert between HEX, RGB, RGBA, HSL, HSLA color formats instantly. Visual color picker, presets, and recent colors history. Free and works offline.',
+       icon: '🎨',
+       category: 'design',
+       href: '/tools/color-converter',
+       pagePath: 'color-converter',
+       featured: true
+     },
+     {
+       id: 'base64-encoder-decoder',
+       name: 'Base64 Encoder/Decoder',
+       description: 'Convert text to Base64 and decode Base64 back to text instantly. Supports file uploads, Unicode characters, and works completely offline.',
+       icon: '🔄',
+       category: 'text',
+       href: '/tools/base64-encoder-decoder',
+       pagePath: 'base64-encoder-decoder',
+       featured: true
+     },
+ ]
 
 export const categories = [
   { id: 'all', name: 'All Tools', icon: '🔧' },

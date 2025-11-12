@@ -27,6 +27,7 @@
     "gif.js": "^0.2.0",
     "isomorphic-dompurify": "^2.31.0",
     "jszip": "^3.10.1",
+    "kokoro-js": "^1.2.1",
     "lucide-react": "^0.552.0",
     "marked": "^17.0.0",
     "nayuki-qr-code-generator": "^1.8.0",

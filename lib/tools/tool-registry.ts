@@ -160,6 +160,16 @@ export const tools: Tool[] = [
        pagePath: 'pdf-to-images',
        featured: true
      },
+     {
+       id: 'text-to-speech',
+       name: 'Text to Speech',
+       description: 'Convert text to natural-sounding speech using AI. Choose from 30+ voices, generate instantly, and download audio. Free, fast, and 100% private.',
+       icon: '🔊',
+       category: 'audio',
+       href: '/tools/text-to-speech',
+       pagePath: 'text-to-speech',
+       featured: true
+     },
  ]
 
 export const categories = [

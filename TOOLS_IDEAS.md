@@ -48,6 +48,7 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 ## **Audio Tools** 🎵
 
 - **Speech to Text** - Convert audio to text using AI ✅ IMPLEMENTED
+- **Text to Speech** - Convert text to natural speech using AI ✅ IMPLEMENTED
 - **Audio Trimmer** - Cut audio clips
 - **Audio Format Converter** - Convert MP3/WAV/OGG
 - **Volume Adjuster** - Change audio volume
@@ -180,8 +181,9 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 
 ---
 
-**Current Status**: 14 tools implemented
+**Current Status**: 15 tools implemented
 - ✅ Speech to Text
+- ✅ Text to Speech
 - ✅ Word Counter
 - ✅ Image Resizer
 - ✅ JSON Formatter

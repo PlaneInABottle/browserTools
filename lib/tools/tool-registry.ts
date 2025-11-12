@@ -150,6 +150,16 @@ export const tools: Tool[] = [
        pagePath: 'base64-encoder-decoder',
        featured: true
      },
+     {
+       id: 'pdf-to-images',
+       name: 'PDF to Images',
+       description: 'Convert PDF pages to JPG or PNG images with adjustable quality and resolution. Batch convert all pages or download individually. 100% private, works offline.',
+       icon: '🖼️',
+       category: 'pdf',
+       href: '/tools/pdf-to-images',
+       pagePath: 'pdf-to-images',
+       featured: true
+     },
  ]
 
 export const categories = [

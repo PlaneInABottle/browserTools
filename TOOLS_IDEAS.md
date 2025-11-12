@@ -34,7 +34,7 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 
 - **PDF Merger** - Combine multiple PDFs ✅ IMPLEMENTED
 - **PDF Splitter** - Split PDF into separate pages
-- **PDF to Images** - Convert PDF pages to JPG/PNG
+- **PDF to Images** - Convert PDF pages to JPG/PNG ✅ IMPLEMENTED
 - **Images to PDF** - Combine images into a PDF
 - **PDF Compressor** - Reduce PDF file size
 
@@ -180,13 +180,14 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 
 ---
 
-**Current Status**: 13 tools implemented
+**Current Status**: 14 tools implemented
 - ✅ Speech to Text
 - ✅ Word Counter
 - ✅ Image Resizer
 - ✅ JSON Formatter
 - ✅ Markdown to HTML
 - ✅ PDF Merger
+- ✅ PDF to Images
 - ✅ Text Diff Checker
 - ✅ Video to GIF
 - ✅ Password Generator
@@ -195,4 +196,4 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 - ✅ Color Converter
 - ✅ Base64 Encoder/Decoder
 
-**Next Recommended**: Image Compressor (popular for web optimization)
+**Next Recommended**: Hash Generator (MD5, SHA-1, SHA-256) - High utility for developers

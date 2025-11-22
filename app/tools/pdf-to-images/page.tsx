@@ -3,6 +3,7 @@ import { PdfToImagesConverter } from '@/components/tools/PdfToImages'
 import { getToolPageLastModified } from '@/lib/utils/git-dates'
 import { siteConfig } from '@/lib/config/site'
 
+export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 
 const lastModified = getToolPageLastModified('pdf-to-images')

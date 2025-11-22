@@ -6,6 +6,7 @@ export interface Tool {
   category: 'audio' | 'text' | 'image' | 'pdf' | 'video' | 'design'
   href: string
   featured?: boolean
+  aiPowered?: boolean
   pagePath: string // Path to the page file for git tracking
 }
 
@@ -18,7 +19,8 @@ export const tools: Tool[] = [
     category: 'audio',
     href: '/tools/speech-to-text',
     pagePath: 'speech-to-text',
-    featured: true
+    featured: true,
+    aiPowered: true
   },
   {
     id: 'word-counter',
@@ -168,7 +170,8 @@ export const tools: Tool[] = [
        category: 'audio',
        href: '/tools/text-to-speech',
        pagePath: 'text-to-speech',
-       featured: true
+       featured: true,
+       aiPowered: true
      },
  ]
 

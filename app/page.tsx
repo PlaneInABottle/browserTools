@@ -117,53 +117,79 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Tool Grid */}
-      <section id="tools">
-        <h2 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">Available Tools</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tools.map((tool) => (
-            <Link key={tool.id} href={tool.href} className="block h-full">
-              <Card className="h-full hover:shadow-lg hover:border-primary/50 transition-all group cursor-pointer">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="text-4xl">{tool.icon}</div>
-                    <div className="flex-1">
-                      <CardTitle className="group-hover:text-primary transition-colors">
-                        {tool.name}
-                      </CardTitle>
-                      <CardDescription className="mt-2 leading-relaxed">
-                        {tool.description}
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="secondary">{tool.category}</Badge>
-                    <Badge variant="outline" className="border-green-200 dark:border-green-700 text-green-700 dark:text-green-300">
-                      ✓ Free
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
+      {/* Tool Sections by Category */}
+      <section id="tools" className="space-y-6">
+        {categories.filter(cat => cat.id !== 'all').map((category) => {
+          const categoryTools = tools.filter(tool => tool.category === category.id)
 
-          {/* Coming Soon Cards */}
-          <Card className="h-full border-dashed opacity-60">
-            <CardHeader>
-              <div className="flex items-start gap-4">
-                <div className="text-4xl grayscale">📄</div>
-                <div className="flex-1">
-                  <CardTitle className="text-muted-foreground">PDF Converter</CardTitle>
-                  <CardDescription>Convert files to/from PDF</CardDescription>
-                </div>
+          return (
+            <div key={category.id}>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-2xl">{category.icon}</span>
+                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                  {category.name}
+                </h2>
+                <span className="text-xs text-muted-foreground ml-auto">
+                  {categoryTools.length} tool{categoryTools.length !== 1 ? 's' : ''}
+                </span>
               </div>
-            </CardHeader>
-            <CardContent>
-              <Badge variant="secondary">Coming Soon</Badge>
-            </CardContent>
-          </Card>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 pb-6">
+                {categoryTools.map((tool) => (
+                  <Link key={tool.id} href={tool.href} className="block h-full">
+                    <Card className="h-full hover:shadow-md hover:border-primary/50 transition-all group cursor-pointer">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-start gap-2">
+                          <div className="text-2xl flex-shrink-0">{tool.icon}</div>
+                          <div className="flex-1 min-w-0">
+                            <CardTitle className="text-sm group-hover:text-primary transition-colors line-clamp-2">
+                              {tool.name}
+                            </CardTitle>
+                            <CardDescription className="text-xs mt-1 leading-snug line-clamp-2">
+                              {tool.description}
+                            </CardDescription>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      {tool.aiPowered && (
+                        <CardContent className="pt-2">
+                          <Badge variant="outline" className="text-xs border-purple-200 dark:border-purple-700 text-purple-700 dark:text-purple-300">
+                            ✨ AI
+                          </Badge>
+                        </CardContent>
+                      )}
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+              <Separator className="mt-4" />
+            </div>
+          )
+        })}
+
+        {/* Coming Soon Section */}
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-2xl">🚀</span>
+            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              Coming Soon
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+            <Card className="h-full border-dashed opacity-60">
+              <CardHeader className="pb-3">
+                <div className="flex items-start gap-2">
+                  <div className="text-2xl grayscale flex-shrink-0">📄</div>
+                  <div className="flex-1 min-w-0">
+                    <CardTitle className="text-sm text-muted-foreground line-clamp-2">PDF Converter</CardTitle>
+                    <CardDescription className="text-xs mt-1 leading-snug line-clamp-2">Convert files to/from PDF</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 

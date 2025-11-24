@@ -8,7 +8,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
-import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
 
 const VOICE_OPTIONS = [
@@ -36,6 +35,7 @@ export function TextToSpeechConverter() {
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ttsRef = useRef<any>(null)
   const isLoadingRef = useRef(false)
 
@@ -108,8 +108,7 @@ export function TextToSpeechConverter() {
             status: string
             progress?: number
           }) => {
-            const progressValue = Math.max(0, Math.min(progress.progress || 0, 10000))
-            const percentComplete = Math.round(progressValue / 100)
+            const percentComplete = Math.round(progress.progress || 0)
 
             if (progress.status === 'downloading') {
               setLoadingProgress(`Downloading: ${percentComplete}%`)
@@ -224,17 +223,6 @@ export function TextToSpeechConverter() {
       setIsPlaying(false)
     }
   }, [isPlaying])
-
-  const handleReset = useCallback(() => {
-    setText('')
-    setAudioUrl(null)
-    setProcessingTime(null)
-    setIsPlaying(false)
-    if (audioRef.current) {
-      audioRef.current.pause()
-      audioRef.current.currentTime = 0
-    }
-  }, [])
 
   const handleProgressClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {

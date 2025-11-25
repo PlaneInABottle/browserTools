@@ -173,6 +173,16 @@ export const tools: Tool[] = [
        featured: true,
        aiPowered: true
      },
+     {
+       id: 'url-encoder-decoder',
+       name: 'URL Encoder/Decoder',
+       description: 'Encode and decode URLs, parse query parameters, validate URLs, and build URLs from components. Free and works offline.',
+       icon: '🔗',
+       category: 'text',
+       href: '/tools/url-encoder-decoder',
+       pagePath: 'url-encoder-decoder',
+       featured: true
+     },
  ]
 
 export const categories = [

@@ -13,8 +13,8 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 - **Remove Duplicate Lines** - Clean up text files
 - **Text to Speech** - Browser TTS for reading text aloud
 - **JSON Formatter** - Format and validate JSON ✅ IMPLEMENTED
-- **Base64 Encoder/Decoder** - Encode/decode Base64
-- **URL Encoder/Decoder** - Encode/decode URLs
+- **Base64 Encoder/Decoder** - Encode/decode Base64 ✅ IMPLEMENTED
+- **URL Encoder/Decoder** - Encode/decode URLs ✅ IMPLEMENTED
 - **Hash Generator** - MD5, SHA-1, SHA-256 hashes
 
 ## **Image Tools** 🖼️
@@ -152,13 +152,13 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 8. ✅ Base64 Encoder/Decoder - IMPLEMENTED
 
 ### Medium Priority (Popular Tools)
-1. Image Resizer
+1. ✅ Image Resizer - IMPLEMENTED
 2. Image Compressor
-3. PDF Merger
-4. Text Diff Checker
+3. ✅ PDF Merger - IMPLEMENTED
+4. ✅ Text Diff Checker - IMPLEMENTED
 5. Hash Generator
 6. Regex Tester
-7. URL Encoder/Decoder
+7. ✅ URL Encoder/Decoder - IMPLEMENTED
 8. Lorem Ipsum Generator
 
 ### Lower Priority (Nice to Have)
@@ -181,10 +181,11 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 
 ---
 
-**Current Status**: 15 tools implemented
+**Current Status**: 17 tools implemented
 - ✅ Speech to Text
 - ✅ Text to Speech
 - ✅ Word Counter
+- ✅ Case Converter
 - ✅ Image Resizer
 - ✅ JSON Formatter
 - ✅ Markdown to HTML
@@ -197,5 +198,9 @@ Comprehensive list of simple browser-based tools that can be added to Toolympics
 - ✅ UUID Generator
 - ✅ Color Converter
 - ✅ Base64 Encoder/Decoder
+- ✅ URL Encoder/Decoder (with Query Parser, Validator, and Builder)
 
-**Next Recommended**: Hash Generator (MD5, SHA-1, SHA-256) - High utility for developers
+**Next Recommended**:
+1. Hash Generator (MD5, SHA-1, SHA-256) - High utility for developers
+2. Image Compressor - Reduce file sizes (complements Image Resizer)
+3. CSV to JSON Converter - Popular data conversion tool

@@ -155,6 +155,9 @@ export function TextToSpeechConverter() {
     setCurrentTime(0)
     setDuration(0)
 
+    // Yield so the UI can render the loading state before heavy synthesis work
+    await new Promise<void>((resolve) => setTimeout(resolve, 0))
+
     try {
       const startTime = performance.now()
       const audio = await ttsRef.current.generate(text.trim(), {
